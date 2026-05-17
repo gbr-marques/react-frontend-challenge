@@ -1,12 +1,14 @@
+import { createRouter, RouterProvider } from '@tanstack/react-router'
 import { useState } from 'react'
+import { routeTree } from '../routeTree.gen'
+
+const router = createRouter({ routeTree })
 
 function App() {
 
   return (
     <>
-      <section id="center">
-      <h1>CineDash</h1>
-      </section>
+      <RouterProvider router={router} />
     </>
   )
 }
