@@ -5,7 +5,7 @@ const MovieHorizontalList = () => {
     <>
       <div className="flex flex-col gap-2 text-white">
         <div className="flex justify-between">
-            <h3 className="uppercase font-black text-xl">Filmes populares</h3>
+            <h3 className="uppercase font-black text-xl md:text-2xl">Filmes populares</h3>
             <Button variant="link" className="text-muted-foreground">Ver mais...</Button>
         </div>
         <div className="flex gap-2 overflow-scroll pb-4">
