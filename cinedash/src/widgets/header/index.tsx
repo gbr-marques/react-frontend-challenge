@@ -15,7 +15,7 @@ import { Button } from "../../components/ui/button";
 const Header = () => {
   return (
     <>
-      <header className="w-full bg-[#2C3440] p-4 md:p-8 flex justify-between items-center">
+      <header className="w-full bg-[#2C3440] h-[10dvh] p-4 md:p-8 flex justify-between items-center">
         <div className="flex gap-12 items-center">
           <img src={logo}></img>
           <ul className="gap-12 hidden md:flex font-black uppercase text-lg">

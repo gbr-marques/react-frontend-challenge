@@ -4,7 +4,7 @@ import { Link } from "@tanstack/react-router";
 const Footer = () => {
   return (
     <>
-      <footer className="w-full p-4 md:p-8 bg-[#14181c] text-white flex flex-col md:flex-row items-center justify-between gap-4">
+      <footer className="w-full p-4 md:h-[15dvh] md:p-8 bg-[#14181c] text-white flex flex-col md:flex-row items-center justify-between gap-4">
         <ul className="text-center md:text-start uppercase flex flex-col gap-2">
           <li>
             <Link to="/">Home</Link>
