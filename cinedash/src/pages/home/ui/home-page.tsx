@@ -1,7 +1,9 @@
+import MovieHorizontalList from "../../../widgets/movie-horizontal-list";
+
 const HomePage = () => {
   return (
     <>
-      <section className="min-h-[75dvh] bg-[#1D242A] p-4 py-8 flex flex-col">
+      <section className="min-h-[75dvh] bg-[#1D242A] p-4 py-8 flex flex-col gap-8">
         <div className="text-white text-center leading-tight flex flex-col gap-4">
           <h1 className="text-2xl">
             Bem-vindo, curador! Pronto para descobrir novos filmes?
@@ -14,6 +16,8 @@ const HomePage = () => {
             relevantes para a construção de catálogos cinematográficos.
           </p>
         </div>
+        <MovieHorizontalList></MovieHorizontalList>
+        <MovieHorizontalList></MovieHorizontalList>
       </section>
     </>
   );
