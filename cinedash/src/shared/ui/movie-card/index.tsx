@@ -21,7 +21,7 @@ const MovieCard = () => {
           <img
             src="https://posterhouse.org/wp-content/uploads/2021/05/moonlight_0.jpg"
             alt="Poster do filme"
-            className="w-50 rounded-sm border border-[#4D4D4D] shadow-lg"
+            className="w-40 md:w-50 rounded-sm border border-[#4D4D4D] shadow-lg"
           />
         </HoverCardTrigger>
         <HoverCardContent className="bg-[#14181ce0] text-white flex flex-col gap-2 items-center max-w-45 text-center -mt-62.5 backdrop-blur-sm">
