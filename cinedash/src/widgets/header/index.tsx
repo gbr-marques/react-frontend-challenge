@@ -47,7 +47,7 @@ const Header = () => {
         <Menubar className="border-none md:hidden">
           <MenubarMenu>
             <MenubarTrigger>
-              <Menu color="lightgrey"></Menu>
+              <Menu color="grey" className="h-8 "></Menu>
             </MenubarTrigger>
             <MenubarContent className="mr-4 bg-[#3c4655] text-white">
               <MenubarGroup>
