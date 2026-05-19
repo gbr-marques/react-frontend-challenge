@@ -52,13 +52,13 @@ const Header = () => {
             <MenubarContent className="mr-4 bg-[#3c4655] text-white">
               <MenubarGroup>
                 <MenubarItem>
-                  <Link className="uppercase font-black text-xl p-2" to="/home">
+                  <Link className="uppercase font-black text-xl p-2 w-full" to="/home">
                     Home
                   </Link>
                 </MenubarItem>
                 <MenubarItem>
                   <Link
-                    className="uppercase font-black text-xl p-2"
+                    className="uppercase font-black text-xl p-2 w-full"
                     to="/discover"
                   >
                     Descobertas
@@ -66,7 +66,7 @@ const Header = () => {
                 </MenubarItem>
                 <MenubarItem>
                   <Link
-                    className="uppercase font-black text-xl p-2"
+                    className="uppercase font-black text-xl p-2 w-full"
                     to="/watchlist"
                   >
                     Minha estante
