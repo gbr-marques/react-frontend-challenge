@@ -8,7 +8,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "../../../components/ui/resizable";
-import { SortAscIcon, SortDescIcon } from "lucide-react";
+import { ArrowUpDownIcon, SortAscIcon, SortDescIcon } from "lucide-react";
 import { Button } from "../../../components/ui/button";
 
 const data = [
@@ -96,8 +96,14 @@ export function WatchListPage() {
                   <th className="th" key={header.id}>
                     {header.column.columnDef.header?.toString()}
                     {header.column.getCanSort() && (
-                      <Button onClick={header.column.getToggleSortingHandler()}>
-                        {header.column.getIsSorted() ? (
+                      <Button
+                        variant={"link"}
+                        className="text-gray-400"
+                        onClick={header.column.getToggleSortingHandler()}
+                      >
+                        {header.column.getIsSorted() == false ? (
+                          <ArrowUpDownIcon></ArrowUpDownIcon>
+                        ) : header.column.getIsSorted() == "asc" ? (
                           <SortAscIcon></SortAscIcon>
                         ) : (
                           <SortDescIcon></SortDescIcon>
