@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as DiscoverRouteImport } from './routes/discover'
+import { Route as DetailsRouteImport } from './routes/details'
 import { Route as IndexRouteImport } from './routes/index'
 
 const HomeRoute = HomeRouteImport.update({
@@ -23,6 +24,11 @@ const DiscoverRoute = DiscoverRouteImport.update({
   path: '/discover',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DetailsRoute = DetailsRouteImport.update({
+  id: '/details',
+  path: '/details',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,30 +37,34 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/details': typeof DetailsRoute
   '/discover': typeof DiscoverRoute
   '/home': typeof HomeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/details': typeof DetailsRoute
   '/discover': typeof DiscoverRoute
   '/home': typeof HomeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/details': typeof DetailsRoute
   '/discover': typeof DiscoverRoute
   '/home': typeof HomeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/discover' | '/home'
+  fullPaths: '/' | '/details' | '/discover' | '/home'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/discover' | '/home'
-  id: '__root__' | '/' | '/discover' | '/home'
+  to: '/' | '/details' | '/discover' | '/home'
+  id: '__root__' | '/' | '/details' | '/discover' | '/home'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DetailsRoute: typeof DetailsRoute
   DiscoverRoute: typeof DiscoverRoute
   HomeRoute: typeof HomeRoute
 }
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DiscoverRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/details': {
+      id: '/details'
+      path: '/details'
+      fullPath: '/details'
+      preLoaderRoute: typeof DetailsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DetailsRoute: DetailsRoute,
   DiscoverRoute: DiscoverRoute,
   HomeRoute: HomeRoute,
 }
