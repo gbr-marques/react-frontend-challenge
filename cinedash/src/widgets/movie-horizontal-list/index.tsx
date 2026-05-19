@@ -9,7 +9,7 @@ const MovieHorizontalList = () => {
             <h3 className="uppercase font-black text-xl md:text-2xl">Filmes populares</h3>
             <Button variant="link" className="text-muted-foreground">Ver mais...</Button>
         </div>
-        <div className="flex gap-2 overflow-x-auto pb-4">
+        <div className="flex gap-2 overflow-x-auto pb-4 h-60 md:h-80">
             <MovieCard></MovieCard>
             {/* <div className="h-42 min-w-30 rounded-sm bg-[#202020] border border-[#4D4D4D]"></div>
             <div className="h-42 min-w-30 rounded-sm bg-[#202020] border border-[#4D4D4D]"></div>
