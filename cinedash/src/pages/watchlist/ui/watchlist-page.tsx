@@ -1,12 +1,15 @@
 import {
   flexRender,
   getCoreRowModel,
+  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "../../../components/ui/resizable";
+import { SortAscIcon, SortDescIcon } from "lucide-react";
+import { Button } from "../../../components/ui/button";
 
 const data = [
   {
@@ -31,6 +34,7 @@ const columns = [
   {
     accessorKey: "firstName",
     header: "Primeiro nome",
+    enableSorting: false,
     cell: (props: any) => <p>{props.getValue()}</p>,
   },
   {
@@ -65,6 +69,7 @@ export function WatchListPage() {
     data,
     columns,
     getCoreRowModel: getCoreRowModel(), //row model
+    getSortedRowModel: getSortedRowModel(),
   });
 
   console.log(table.getHeaderGroups());
@@ -89,7 +94,18 @@ export function WatchListPage() {
               <tr className="tr" key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <th className="th" key={header.id}>
-                    {header.id}
+                    {header.column.columnDef.header?.toString()}
+                    {header.column.getCanSort() && (
+                      <Button onClick={header.column.getToggleSortingHandler()}>
+                        {header.column.getIsSorted() ? (
+                          <SortAscIcon></SortAscIcon>
+                        ) : (
+                          <SortDescIcon></SortDescIcon>
+                        )}
+                      </Button>
+                    )}
+                    {}
+                    {}
                   </th>
                 ))}
               </tr>
