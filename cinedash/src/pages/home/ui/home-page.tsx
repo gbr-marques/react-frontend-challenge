@@ -1,6 +1,6 @@
 import MovieHorizontalList from "../../../widgets/movie-horizontal-list";
 
-const HomePage = () => {
+export function HomePage () {
   return (
     <>
       <section className="min-h-[75dvh] bg-[#1D242A] p-4 py-8 flex flex-col gap-8">
@@ -23,4 +23,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+// export default HomePage;
