@@ -1,6 +1,7 @@
 import {
   flexRender,
   getCoreRowModel,
+  getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
@@ -8,7 +9,13 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "../../../components/ui/resizable";
-import { ArrowUpDownIcon, SortAscIcon, SortDescIcon } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ArrowUpDownIcon,
+  SortAscIcon,
+  SortDescIcon,
+} from "lucide-react";
 import { Button } from "../../../components/ui/button";
 
 const data = [
@@ -21,6 +28,110 @@ const data = [
     status: "Married",
   },
   {
+    firstName: "Kevin",
+    lastName: "Vandy",
+    age: 27,
+    visits: 200,
+    progress: 100,
+    status: "Single",
+  },
+   {
+    firstName: "Kevin",
+    lastName: "Vandy",
+    age: 27,
+    visits: 200,
+    progress: 100,
+    status: "Single",
+  },
+   {
+    firstName: "Kevin",
+    lastName: "Vandy",
+    age: 27,
+    visits: 200,
+    progress: 100,
+    status: "Single",
+  },
+   {
+    firstName: "Kevin",
+    lastName: "Vandy",
+    age: 27,
+    visits: 200,
+    progress: 100,
+    status: "Single",
+  },
+   {
+    firstName: "Kevin",
+    lastName: "Vandy",
+    age: 27,
+    visits: 200,
+    progress: 100,
+    status: "Single",
+  },
+   {
+    firstName: "Kevin",
+    lastName: "Vandy",
+    age: 27,
+    visits: 200,
+    progress: 100,
+    status: "Single",
+  },
+   {
+    firstName: "Kevin",
+    lastName: "Vandy",
+    age: 27,
+    visits: 200,
+    progress: 100,
+    status: "Single",
+  },
+   {
+    firstName: "Kevin",
+    lastName: "Vandy",
+    age: 27,
+    visits: 200,
+    progress: 100,
+    status: "Single",
+  },
+   {
+    firstName: "Kevin",
+    lastName: "Vandy",
+    age: 27,
+    visits: 200,
+    progress: 100,
+    status: "Single",
+  },
+   {
+    firstName: "Kevin",
+    lastName: "Vandy",
+    age: 27,
+    visits: 200,
+    progress: 100,
+    status: "Single",
+  },
+   {
+    firstName: "Kevin",
+    lastName: "Vandy",
+    age: 27,
+    visits: 200,
+    progress: 100,
+    status: "Single",
+  },
+   {
+    firstName: "Kevin",
+    lastName: "Vandy",
+    age: 27,
+    visits: 200,
+    progress: 100,
+    status: "Single",
+  },
+   {
+    firstName: "Kevin",
+    lastName: "Vandy",
+    age: 27,
+    visits: 200,
+    progress: 100,
+    status: "Single",
+  },
+   {
     firstName: "Kevin",
     lastName: "Vandy",
     age: 27,
@@ -70,9 +181,8 @@ export function WatchListPage() {
     columns,
     getCoreRowModel: getCoreRowModel(), //row model
     getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
   });
-
-  console.log(table.getHeaderGroups());
 
   return (
     <>
@@ -110,8 +220,6 @@ export function WatchListPage() {
                         )}
                       </Button>
                     )}
-                    {}
-                    {}
                   </th>
                 ))}
               </tr>
@@ -129,6 +237,28 @@ export function WatchListPage() {
             ))}
           </tbody>
         </table>
+        <div className="flex justify-between">
+          <Button
+            disabled={!table.getCanPreviousPage()}
+            onClick={() => {
+                table.previousPage()
+            }}
+            className="bg-gray-400 h-12 uppercase font-extralight text-gray-800"
+          >
+            <ArrowLeftIcon></ArrowLeftIcon> Página anterior
+          </Button>
+          <Button
+            disabled={!table.getCanNextPage()}
+            onClick={() => {
+              table.nextPage()
+            }}
+            className="bg-gray-400 h-12 uppercase font-extralight text-gray-800"
+          >
+            Próxima página <ArrowRightIcon></ArrowRightIcon>
+          </Button>
+        </div>
+        <div>
+        </div>
       </section>
     </>
   );
