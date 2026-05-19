@@ -12,13 +12,18 @@ import {
 import { Separator } from "../../../components/ui/separator";
 import { Toggle } from "../../../components/ui/toggle";
 import { Button } from "../../../components/ui/button";
+import { useNavigate } from "@tanstack/react-router";
 
 const MovieCard = () => {
+
+  const navigate = useNavigate()
+
   return (
     <>
       <HoverCard openDelay={50} closeDelay={50}>
         <HoverCardTrigger>
           <img
+            onClick={() => navigate({to: '/details'})}
             src="https://posterhouse.org/wp-content/uploads/2021/05/moonlight_0.jpg"
             alt="Poster do filme"
             className="w-full h-full rounded-sm border border-[#4D4D4D] shadow-lg"
