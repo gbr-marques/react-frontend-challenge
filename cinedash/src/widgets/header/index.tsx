@@ -20,7 +20,7 @@ const Header = () => {
           <img src={logo}></img>
           <ul className="gap-12 hidden md:flex font-black uppercase text-lg">
             <li>
-              <Link className="text-white" to="/descobertas">
+              <Link className="text-white" to="/home">
                 Home
               </Link>
             </li>
@@ -30,7 +30,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link className="text-white" to="/estante">
+              <Link className="text-white" to="/watchlist">
                 Minha estante
               </Link>
             </li>
