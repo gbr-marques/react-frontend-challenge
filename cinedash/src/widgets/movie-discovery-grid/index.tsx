@@ -27,12 +27,12 @@ const MoviedDiscoveryGrid = () => {
               type="text"
               placeholder="Pesquise pelo nome do filme..."
             ></Input>
-            <Toggle>
+            {/* <Toggle>
               <SlidersHorizontalIcon className="text-gray-500"></SlidersHorizontalIcon>
               <span className="text-gray-400 hidden md:block">
                 Exibir filtros
               </span>
-            </Toggle>
+            </Toggle> */}
           </div>
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 p-2 md:p-4 border border-gray-400 rounded-sm">
             <legend className="text-gray-400 text-sm">Filtrar por:</legend>
@@ -70,7 +70,7 @@ const MoviedDiscoveryGrid = () => {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-2  w-full">
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-4 w-full">
           <MovieCard></MovieCard>
           <MovieCard></MovieCard>
           <MovieCard></MovieCard>
