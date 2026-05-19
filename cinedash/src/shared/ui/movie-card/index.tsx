@@ -13,29 +13,32 @@ import { Separator } from "../../../components/ui/separator";
 import { Toggle } from "../../../components/ui/toggle";
 import { Button } from "../../../components/ui/button";
 import { useNavigate } from "@tanstack/react-router";
+import type { TMovie } from "../../../entities/movie/model/types";
+import { BASE_URL } from "../../api/tmdb";
 
-const MovieCard = () => {
+type Props = {
+  movie: TMovie;
+};
 
-  const navigate = useNavigate()
+export function MovieCard({ movie }: Props) {
+  
+  const navigate = useNavigate();
 
   return (
     <>
       <HoverCard openDelay={50} closeDelay={50}>
-        <HoverCardTrigger>
+        <HoverCardTrigger className="min-w-fit!">
           <img
-            onClick={() => navigate({to: '/details'})}
-            src="https://posterhouse.org/wp-content/uploads/2021/05/moonlight_0.jpg"
-            alt="Poster do filme"
-            className="w-full h-full rounded-sm border border-[#4D4D4D] shadow-lg"
+            onClick={() => navigate({ to: "/details" })}
+            src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
+            alt={`Pôster do filme ${movie?.title}`}
+            className="max-h-full rounded-sm border border-[#4D4D4D] shadow-lg"
           />
         </HoverCardTrigger>
         <HoverCardContent className="bg-[#14181ce0] text-white flex flex-col gap-2 items-center max-w-45 text-center -mt-62.5 backdrop-blur-sm">
-          <h5 className="text-lg font-bold">Titulo do filme</h5>
+          <h5 className="text-lg font-bold">{movie?.title}</h5>
           <p className="text-sm line-clamp-5 font-extralight leading-tight">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-            esse vitae totam saepe sed accusamus, soluta similique, magni
-            fugiat, dolorum numquam quis. Illum ex tempora hic incidunt minima?
-            Delectus, voluptatem?
+            {movie?.overview}
           </p>
           <Separator></Separator>
           <div className="flex gap-2">
@@ -50,6 +53,6 @@ const MovieCard = () => {
       </HoverCard>
     </>
   );
-};
+}
 
 export default MovieCard;
