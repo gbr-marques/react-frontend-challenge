@@ -18,7 +18,7 @@ export function DetailsPage() {
             alt="Poster do filme"
             className="w-40 max-w-100 md:w-2/5 h-full rounded-sm border border-[#4D4D4D] shadow-lg"
           />
-          <div className="flex flex-col gap-3 max-w-150">
+          <div className="flex flex-col gap- max-w-150">
             <div className="flex items-end gap-2">
               <h1 className="text-white text-3xl">Star Wars</h1>
               <span className="text-gray-400 text-xs">1977 - 2h12m</span>
