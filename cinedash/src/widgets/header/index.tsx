@@ -52,19 +52,33 @@ const Header = () => {
             <MenubarContent className="mr-4 bg-[#3c4655] text-white">
               <MenubarGroup>
                 <MenubarItem>
-                  <Link to="/">Home</Link>
+                  <Link className="uppercase font-black text-xl p-2" to="/home">
+                    Home
+                  </Link>
                 </MenubarItem>
                 <MenubarItem>
-                  <Link to="/descobertas">Descobertas</Link>
+                  <Link
+                    className="uppercase font-black text-xl p-2"
+                    to="/discover"
+                  >
+                    Descobertas
+                  </Link>
                 </MenubarItem>
                 <MenubarItem>
-                  <Link to="/estante">Minha estante</Link>
+                  <Link
+                    className="uppercase font-black text-xl p-2"
+                    to="/watchlist"
+                  >
+                    Minha estante
+                  </Link>
                 </MenubarItem>
               </MenubarGroup>
               <MenubarSeparator />
               <MenubarGroup>
                 <MenubarItem>
-                  Logout <LogOutIcon></LogOutIcon>
+                  <Link to="/" className="flex gap-2 items-center p-2">
+                    Logout <LogOutIcon></LogOutIcon>
+                  </Link>
                 </MenubarItem>
               </MenubarGroup>
             </MenubarContent>
