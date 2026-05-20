@@ -1,8 +1,6 @@
 import {
-  Bookmark,
   BookmarkIcon,
   SquareArrowOutUpRight,
-  View,
 } from "lucide-react";
 import {
   HoverCard,
@@ -13,11 +11,10 @@ import { Separator } from "../../../components/ui/separator";
 import { Toggle } from "../../../components/ui/toggle";
 import { Button } from "../../../components/ui/button";
 import { useNavigate } from "@tanstack/react-router";
-import type { TMovie } from "../../../entities/movie/model/types";
-import { BASE_URL } from "../../api/tmdb";
+import type { IMovie } from "../../../entities/movie/model/types";
 
 type Props = {
-  movie: TMovie;
+  movie: IMovie;
 };
 
 export function MovieCard({ movie }: Props) {
@@ -29,7 +26,7 @@ export function MovieCard({ movie }: Props) {
       <HoverCard openDelay={50} closeDelay={50}>
         <HoverCardTrigger className="min-w-fit!">
           <img
-            onClick={() => navigate({ to: "/details" })}
+            onClick={() => navigate({ to: `/details/${movie?.id}` })}
             src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
             alt={`Pôster do filme ${movie?.title}`}
             className="max-h-full rounded-sm border border-[#4D4D4D] shadow-lg"
@@ -45,7 +42,7 @@ export function MovieCard({ movie }: Props) {
             <Toggle>
               <BookmarkIcon className="group-data-[state=on]/toggle:fill-foreground" />
             </Toggle>
-            <Button variant={"ghost"}>
+            <Button onClick={() => navigate({ to: `/details/${movie?.id}` })} variant={"ghost"}>
               <SquareArrowOutUpRight></SquareArrowOutUpRight>
             </Button>
           </div>
