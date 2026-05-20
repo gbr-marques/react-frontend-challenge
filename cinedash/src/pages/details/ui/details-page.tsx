@@ -7,8 +7,16 @@ import {
 } from "lucide-react";
 import { Badge } from "../../../components/ui/badge";
 import { Button } from "../../../components/ui/button";
+import { Route } from "../../../routes/details/$id";
+import { useMovieDetails } from "../../../entities/movie/api/use-movie-details";
 
 export function DetailsPage() {
+  const { id } = Route.useParams();
+
+  const { data, isLoading, error } = useMovieDetails(id);
+
+  console.log(data);
+
   return (
     <>
       <section className="min-h-[75dvh] bg-[#1D242A] p-4 md:p-24 py-8 flex flex-col gap-8 items-center">
@@ -18,10 +26,10 @@ export function DetailsPage() {
             alt="Poster do filme"
             className="w-40 max-w-100 md:w-2/5 h-full rounded-sm border border-[#4D4D4D] shadow-lg"
           />
-          <div className="flex flex-col gap- max-w-150">
+          <div className="flex flex-col gap-2 max-w-150">
             <div className="flex items-end gap-2">
-              <h1 className="text-white text-3xl">Star Wars</h1>
-              <span className="text-gray-400 text-xs">1977 - 2h12m</span>
+              <h1 className="text-white text-3xl">{data?.title}</h1>
+              <span className="text-gray-400 text-xs">{} - 2h12m</span>
             </div>
             <div className="flex items-end gap-2">
               <span className="flex">
