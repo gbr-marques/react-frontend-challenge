@@ -1,6 +1,6 @@
 import MovieHorizontalList from "../../../widgets/movie-horizontal-list";
 
-export function HomePage () {
+export function HomePage() {
   return (
     <>
       <section className="min-h-[75dvh] bg-[#1D242A] p-4 py-8 flex flex-col gap-8">
@@ -16,11 +16,21 @@ export function HomePage () {
             relevantes para a construção de catálogos cinematográficos.
           </p>
         </div>
-        <MovieHorizontalList></MovieHorizontalList>
-        <MovieHorizontalList></MovieHorizontalList>
+        <MovieHorizontalList
+          title="Filmes populares"
+          displayMode="popular"
+          showHyperlink={true}
+          hyperlinkRoute="/discover"
+        ></MovieHorizontalList>
+        <MovieHorizontalList
+          title="Sua lista de favoritos"
+          displayMode="watchlist"
+          showHyperlink={true}
+          hyperlinkRoute="/watchlist"
+        ></MovieHorizontalList>
       </section>
     </>
   );
-};
+}
 
 // export default HomePage;

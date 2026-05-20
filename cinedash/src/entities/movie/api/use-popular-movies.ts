@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { tmdbFetch } from "../../../shared/api/tmdb";
 import type { TMoviesResponse } from "../model/types";
+import { boolean } from "zod";
 
-export function usePopularMovies() {
+export function usePopularMovies(shouldFetch: boolean) {
   return useQuery({
     queryKey: ["popular-movies"],
     queryFn: fetchPopularMovies,
+    enabled: shouldFetch,
   });
 }
 
