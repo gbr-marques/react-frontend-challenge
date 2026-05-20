@@ -14,8 +14,15 @@ export type IMovie = {
   video: boolean
   vote_average: number
   vote_count: number
+  tagline: string
+  genres: IGenre[]
 }
 
 export type IMoviesResponse = {
   results: IMovie[]
+}
+
+export type IGenre = {
+  id: number
+  name: string
 }
