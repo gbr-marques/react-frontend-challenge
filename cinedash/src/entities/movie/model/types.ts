@@ -1,4 +1,4 @@
-export type TMovie = {
+export type IMovie = {
   adult: boolean
   backdrop_path: string
   genre_ids: number[]
@@ -16,6 +16,6 @@ export type TMovie = {
   vote_count: number
 }
 
-export type TMoviesResponse = {
-  results: TMovie[]
+export type IMoviesResponse = {
+  results: IMovie[]
 }

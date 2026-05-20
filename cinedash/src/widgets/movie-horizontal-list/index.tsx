@@ -1,6 +1,6 @@
 import { usePopularMovies } from "../../entities/movie/api/use-popular-movies";
 import MovieCard from "../../shared/ui/movie-card";
-import type { TMovie } from "../../entities/movie/model/types";
+import type { IMovie } from "../../entities/movie/model/types";
 import { Link } from "@tanstack/react-router";
 
 type Props = {
@@ -34,7 +34,7 @@ const MovieHorizontalList = ({
           {isLoading ? (
             <p>Carregando filmes...</p>
           ) : (
-            data?.map((movie: TMovie) => (
+            data?.map((movie: IMovie) => (
               <MovieCard movie={movie} key={movie.id}></MovieCard>
             ))
           )}

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { tmdbFetch } from "../../../shared/api/tmdb";
-import type { TMoviesResponse } from "../model/types";
+import type { IMoviesResponse } from "../model/types";
 import { boolean } from "zod";
 
 export function usePopularMovies(shouldFetch: boolean) {
@@ -12,7 +12,7 @@ export function usePopularMovies(shouldFetch: boolean) {
 }
 
 async function fetchPopularMovies() {
-  const data = await tmdbFetch<TMoviesResponse>("/movie/popular");
+  const data = await tmdbFetch<IMoviesResponse>("/movie/popular");
   return data.results;
 }
 
