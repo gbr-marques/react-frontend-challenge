@@ -1,12 +1,6 @@
 import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  LoaderCircleIcon,
   SearchIcon,
 } from "lucide-react";
-import MovieCardSkeleton from "../../shared/ui/movie-card/skeleton";
-import MovieCard from "../../shared/ui/movie-card";
-import { Button } from "../../components/ui/button";
 import { useState } from "react";
 import { Input } from "../../components/ui/input";
 import { useDebounce } from "../../shared/lib/use-debounce";
@@ -44,14 +38,14 @@ const MovieSearchGrid = () => {
 
         {debouncedTitle === "" ? (
           <div className="h-75 flex items-center justify-center text-xl leading-tight text-center text-white font-bold">
-            <span className="w-4/5 flex gap-4 items-center">
+            <span className="w-fit! text-center flex gap-4 items-center justify-center">
               Digite o título do filme para realizar uma pesquisa
               <SearchIcon size={48} className="stroke-3"></SearchIcon>
             </span>{" "}
           </div>
         ) : data?.total_results === 0 ? (
           <div className="h-75 flex items-center justify-center text-xl leading-tight text-center text-white font-bold">
-            <span className="w-4/5 flex gap-4 items-center">
+            <span className="w-fit! text-center flex gap-4 items-center justify-center">
               "Nenhum resultado encontrado para o título pesquisado..."
               <SearchIcon size={48} className="stroke-3"></SearchIcon>
             </span>

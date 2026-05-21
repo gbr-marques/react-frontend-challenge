@@ -21,7 +21,7 @@ export function MovieGrid({
 }: Props) {
   return (
     <>
-      <div className="grid grid-cols-4 md:grid-cols-6 gap-2 md:gap-4 w-full">
+      <div className="grid grid-cols-4 md:grid-cols-5 gap-2 md:gap-4 w-full">
         {isLoading
           ? Array.from({ length: 20 }).map((_, i) => (
               <MovieCardSkeleton key={i} />
@@ -44,8 +44,6 @@ export function MovieGrid({
           )}
           Página anterior
         </Button>
-
-        {page}
 
         <Button
           className="bg-gray-400 h-12 uppercase font-extralight text-gray-800"

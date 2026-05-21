@@ -186,7 +186,7 @@ const WatchlistTable = () => {
                         alt={movie.title}
                         className="h-[196px] rounded-xs"
                       />
-                      <div className="flex flex-col justify-between w-full p-2 gap-4 md:gap-4">
+                      <div className="flex flex-col md:flex-row justify-between w-full p-2 gap-4 md:gap-4">
                         <div className="flex flex-col gap-1 md:gap-2 w-full">
                           <h3 className="text-white font-bold md:text-2xl line-clamp-1">
                             {movie.title}
@@ -208,7 +208,7 @@ const WatchlistTable = () => {
                           </div>
                         </div>
 
-                        <div className="flex  gap-2 flex-col md:flex-row">
+                        <div className="flex  gap-2 flex-col ">
                           <Button
                             className="md:h-12 bg-gray-400 uppercase text-gray-800"
                             onClick={() => removeMovie(movie.id)}

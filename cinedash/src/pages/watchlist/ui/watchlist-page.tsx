@@ -33,7 +33,7 @@ export function WatchListPage() {
   return (
     <>
       <section className="min-h-[75dvh] bg-[#1D242A] p-4 py-8 flex flex-col gap-8 items-center">
-        <div className="flex flex-col gap-8 max-w-400">
+        <div className="flex flex-col gap-8 md:max-w-200 lg:max-w-300">
           <div className="text-white text-center leading-tight font-extralight flex flex-col items-center gap-4 ">
             <h1 className="text-2xl md:text-4xl bg">
               Filmes que chamaram atenção
