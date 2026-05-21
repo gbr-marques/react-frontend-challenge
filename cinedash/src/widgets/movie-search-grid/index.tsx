@@ -23,6 +23,9 @@ const MovieSearchGrid = () => {
   return (
     <>
       <div className="flex flex-col gap-4">
+        <h3 className="uppercase font-black text-xl text-white md:text-2xl inter-title">
+          Busca por título
+        </h3>
         <Input
           className="bg-white h-12 md:w-150"
           type="text"

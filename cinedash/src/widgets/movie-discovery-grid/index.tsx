@@ -30,7 +30,9 @@ const MoviedDiscoveryGrid = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      {/* FILTROS */}
+        <h3 className="uppercase font-black text-xl text-white md:text-2xl inter-title">
+          Filtros avançados
+        </h3>
       <div className="flex flex-col md:flex-row gap-2 md:gap-4 p-2 md:p-4 border border-gray-400 rounded-sm">
         <legend className="text-gray-400 text-sm">Filtrar por:</legend>
 
