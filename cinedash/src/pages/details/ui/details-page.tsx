@@ -116,7 +116,7 @@ export function DetailsPage() {
           <div className="flex w-full h-150 text-white flex-col items-center justify-center gap-2 p-4 text-center leading-tight md:gap-4">
             <h3 className="text-xl font-bold md:text-2xl">Ops...</h3>
 
-            <p>Ocorreu um erro ao buscar os filmes do momento.</p>
+            <p>Ocorreu um erro ao buscar os detalhes desse filme.</p>
 
             <Button
               onClick={() => refetch()}
