@@ -21,7 +21,7 @@ export function DiscoverPage() {
             para compor o catálogo ideal.
           </p>
         </div>
-        <Tabs className="flex flex-col gap-4">
+        <Tabs defaultValue="popular" className="flex flex-col gap-4">
           <TabsList className="bg-gray-300! w-full! md:w-auto">
             <TabsTrigger value="popular">Os mais populares</TabsTrigger>
             <TabsTrigger value="search">Buscar por título</TabsTrigger>
