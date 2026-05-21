@@ -24,7 +24,7 @@ async function fetchMovies(filters: IFilters) {
   if (filters.year) params.append("primary_release_year", filters.year);
   if (filters.genre) params.append("with_genres", filters.genre);
   if (filters.rating) params.append("vote_average.gte", filters.rating);
-  params.append("page", filters.page);
+  params.append("page", filters.page.toString());
 
   return tmdbFetch<{ results: IMovie[] }>(
     `/discover/movie?${params.toString()}&language=pt-BR`,
