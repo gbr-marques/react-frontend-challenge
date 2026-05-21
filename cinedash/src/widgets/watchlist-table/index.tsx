@@ -1,22 +1,17 @@
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
-  ArrowUpDownIcon,
-  SortAscIcon,
-  SortDescIcon,
   SquareArrowOutUpRight,
   StarIcon,
   XIcon,
 } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import {
-  flexRender,
   getCoreRowModel,
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
   type Row,
-  type SortingOptions,
   type SortingState,
 } from "@tanstack/react-table";
 import type { IGenre, IMovie } from "../../entities/movie/model/types";
@@ -25,7 +20,13 @@ import { useNavigate } from "@tanstack/react-router";
 import { useWatchlistStore } from "../../features/watchlist/use-watchlist-store";
 import { Badge } from "../../components/ui/badge";
 import { useState } from "react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../components/ui/select";
 
 const WatchlistTable = () => {
   const { watchlist, removeMovie } = useWatchlistStore();
@@ -35,12 +36,12 @@ const WatchlistTable = () => {
   const data = watchlist;
 
   type SortOption =
-  | 'title_asc'
-  | 'title_desc'
-  | 'release_date_asc'
-  | 'release_date_desc'
-  | 'vote_average_asc'
-  | 'vote_average_desc'
+    | "title_asc"
+    | "title_desc"
+    | "release_date_asc"
+    | "release_date_desc"
+    | "vote_average_asc"
+    | "vote_average_desc";
 
   const columns = [
     {
@@ -52,7 +53,7 @@ const WatchlistTable = () => {
           <img
             src={`https://image.tmdb.org/t/p/w500/${props.getValue()}`}
             alt="Poster do filme"
-            className="h-24 aspect-[65/98]! rounded-sm border border-[#1d242aea] shadow-lg"
+            className="h-24 aspect-65/98! rounded-sm border border-[#1d242aea] shadow-lg"
           />{" "}
         </div>
       ),
@@ -135,7 +136,7 @@ const WatchlistTable = () => {
     columns,
     state: {
       pagination,
-      sorting
+      sorting,
     },
     onPaginationChange: setPagination,
     getCoreRowModel: getCoreRowModel(), //row model
@@ -170,52 +171,71 @@ const WatchlistTable = () => {
           <SelectItem value="vote_average">Nota</SelectItem>
         </SelectContent>
       </Select>
-      <table className="table border border-gray-400 rounded-xl max-w-[90dvw]!">
-        <thead className="bg-[#181d22] text-gray-300 ">
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <th
-                  key={header.id}
-                  className="px-4 py-3 text-left text-sm font-extrabold whitespace-nowrap"
-                >
-                  <div className="flex items-center gap-2">
-                    {header.column.columnDef.header?.toString()}
+      <table className="table">
+        <tbody className="flex flex-col gap-2">
+          {table.getRowModel().rows.map((row) => {
+            const movie = row.original;
 
-                    {header.column.getCanSort() && (
-                      <Button
-                        variant="link"
-                        className="text-gray-400 p-0 h-auto"
-                        onClick={header.column.getToggleSortingHandler()}
-                      >
-                        {header.column.getIsSorted() === false ? (
-                          <ArrowUpDownIcon className="h-4 w-4" />
-                        ) : header.column.getIsSorted() === "asc" ? (
-                          <SortAscIcon className="h-4 w-4" />
-                        ) : (
-                          <SortDescIcon className="h-4 w-4" />
-                        )}
-                      </Button>
-                    )}
+            return (
+              <tr key={row.id}>
+                <td className="block">
+                  <div className="w-full! md:max-h-fit flex flex-col gap-2 rounded-md border border-gray-700 bg-[#0f1316] p-2">
+                    <div className="flex gap-2">
+                      <img
+                        src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                        alt={movie.title}
+                        className="h-[196px] rounded-xs"
+                      />
+                      <div className="flex flex-col justify-between w-full p-2 gap-4 md:gap-4">
+                        <div className="flex flex-col gap-1 md:gap-2 w-full">
+                          <h3 className="text-white font-bold md:text-2xl line-clamp-1">
+                            {movie.title}
+                          </h3>
+
+                          <span className=" text-gray-400 text-sm md:text-md">
+                            {moment(movie.release_date).format("d/M/yyyy")}
+                          </span>
+
+                          <span className=" text-yellow-300 text-sm md:text-md">
+                            ⭐ {movie.vote_average}
+                          </span>
+                          <div className="flex flex-wrap gap-2">
+                            {movie.genres?.slice(0,2).map((genre) => (
+                              <Badge key={genre.id} className="bg-[#1D242A]">
+                                {genre.name}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="flex  gap-2 flex-col md:flex-row">
+                          <Button
+                            className="md:h-12 bg-gray-400 uppercase text-gray-800"
+                            onClick={() => removeMovie(movie.id)}
+                            variant={"secondary"}
+                          >
+                            Remover <XIcon />
+                          </Button>
+
+                          <Button
+                            className="md:h-12 bg-gray-400 uppercase text-gray-800"
+                            onClick={() =>
+                              navigate({
+                                to: `/details/${movie.id}`,
+                              })
+                            }
+                            variant={"secondary"}
+                          >
+                            Visualizar <SquareArrowOutUpRight />
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody className="divide-y divide-gray-700 bg-[#0f1316]">
-          {table.getRowModel().rows.map((row) => (
-            <tr key={row.id} className="hover:bg-[#1D242A] transition-colors">
-              {row.getVisibleCells().map((cell) => (
-                <td
-                  key={cell.id}
-                  className="px-4 py-3 text-sm text-gray-300 whitespace-nowrap"
-                >
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
-              ))}
-            </tr>
-          ))}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
       <div className="flex justify-between">
