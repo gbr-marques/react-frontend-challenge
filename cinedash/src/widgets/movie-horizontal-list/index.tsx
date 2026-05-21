@@ -35,7 +35,7 @@ const MovieHorizontalList = ({
             ? Array.from({ length: 8 }).map((_, i) => (
                 <HorizontalListSkeleton key={i} />
               ))
-            : data?.map((movie: IMovie) => (
+            : data?.results.map((movie: IMovie) => (
                 <MovieCard movie={movie} key={movie.id}></MovieCard>
               ))}
         </div>
