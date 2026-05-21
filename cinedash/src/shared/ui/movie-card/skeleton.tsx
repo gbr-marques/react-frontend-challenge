@@ -2,7 +2,7 @@ import { Skeleton } from "../../../components/ui/skeleton";
 
 function MovieCardSkeleton() {
   return <>
-    <Skeleton className="aspect-[65/98]! h-full bg-[#2b363f]"></Skeleton>
+    <Skeleton className="aspect-[65/98]! h-full min-w-full bg-[#2b363f]"></Skeleton>
   </>
 }
 

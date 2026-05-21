@@ -30,13 +30,13 @@ export function DiscoverPage() {
               <TabsTrigger className="text-xs md:text-sm" value="search">Buscar por título</TabsTrigger>
               <TabsTrigger className="text-xs md:text-sm" value="filters">Filtros avançados</TabsTrigger>
             </TabsList>
-            <TabsContent value="popular">
+            <TabsContent className="w-full" value="popular">
               <PopularMoviesGrid></PopularMoviesGrid>
             </TabsContent>
-            <TabsContent value="search">
+            <TabsContent className="w-full" value="search">
               <MovieSearchGrid></MovieSearchGrid>
             </TabsContent>
-            <TabsContent value="filters">
+            <TabsContent className="w-full" value="filters">
               <MoviedDiscoveryGrid></MoviedDiscoveryGrid>
             </TabsContent>
           </Tabs>

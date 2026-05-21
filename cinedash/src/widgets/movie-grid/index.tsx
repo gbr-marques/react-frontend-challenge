@@ -21,8 +21,9 @@ export function MovieGrid({
 }: Props) {
   return (
     <>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 min-w-full">
         <div className="grid grid-cols-4 md:grid-cols-5 gap-2 md:gap-4 w-full">
+          
           {isLoading
             ? Array.from({ length: 20 }).map((_, i) => (
                 <MovieCardSkeleton key={i} />

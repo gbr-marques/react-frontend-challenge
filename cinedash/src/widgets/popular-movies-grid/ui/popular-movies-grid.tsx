@@ -14,7 +14,7 @@ export function PopularMoviesGrid() {
 
   return (
     <>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 w-full">
         <h3 className="uppercase font-black text-xl text-white md:text-2xl inter-title">
           Filmes populares
         </h3>
