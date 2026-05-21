@@ -27,7 +27,7 @@ import { useNavigate } from "@tanstack/react-router";
 export function WatchListPage() {
   const { watchlist, removeMovie } = useWatchlistStore();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const columns = [
     {
@@ -63,7 +63,7 @@ export function WatchListPage() {
               className="cursor-pointer"
               onClick={() => removeMovie(movie.id)}
             >
-              <XIcon /> {movie.title}
+              <XIcon />
             </Button>
 
             <Button
