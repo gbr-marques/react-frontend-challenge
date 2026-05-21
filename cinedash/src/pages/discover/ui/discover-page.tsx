@@ -1,4 +1,10 @@
 import { Separator } from "../../../components/ui/separator";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "../../../components/ui/tabs";
 import MoviedDiscoveryGrid from "../../../widgets/movie-discovery-grid";
 import MovieHorizontalList from "../../../widgets/movie-horizontal-list";
 import MovieSearchGrid from "../../../widgets/movie-search-grid";
@@ -15,11 +21,22 @@ export function DiscoverPage() {
             para compor o catálogo ideal.
           </p>
         </div>
-        {/* <PopularMoviesGrid></PopularMoviesGrid> */}
-        {/* <MovieHorizontalList displayMode="popular" title="Destaques do momento" showHyperlink={false}></MovieHorizontalList> */}
-        {/* <Separator></Separator> */}
-        <MoviedDiscoveryGrid></MoviedDiscoveryGrid>
-        {/* <MovieSearchGrid></MovieSearchGrid> */}
+        <Tabs className="flex flex-col gap-4">
+          <TabsList className="bg-gray-300! w-full! md:w-auto">
+            <TabsTrigger value="popular">Os mais populares</TabsTrigger>
+            <TabsTrigger value="search">Buscar por título</TabsTrigger>
+            <TabsTrigger value="filters">Filtros avançados</TabsTrigger>
+          </TabsList>
+          <TabsContent value="popular">
+            <PopularMoviesGrid></PopularMoviesGrid>
+          </TabsContent>
+          <TabsContent value="search">
+            <MovieSearchGrid></MovieSearchGrid>
+          </TabsContent>
+          <TabsContent value="filters">
+            <MoviedDiscoveryGrid></MoviedDiscoveryGrid>
+          </TabsContent>
+        </Tabs>
       </section>
     </>
   );
