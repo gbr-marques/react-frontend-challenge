@@ -21,8 +21,6 @@ export function DetailsPage() {
 
   const { addMovie, removeMovie, isFavorite } = useWatchlistStore();
 
-  console.log(movie);
-
   return (
     <>
       <section
@@ -88,9 +86,20 @@ export function DetailsPage() {
                   Ações
                 </h5>
                 <div className="flex gap-2">
-                  {}
-                  <Button className="h-12 uppercase font-extralight bg bg-orange-500">
-                    <BookmarkIcon></BookmarkIcon> 
+                  <Button
+                    onClick={() =>
+                      isFavorite(movie?.id)
+                        ? removeMovie(movie?.id)
+                        : addMovie(movie!)
+                    }
+                    className="cursor-pointer h-12 uppercase font-extralight bg bg-orange-500"
+                  >
+                    <BookmarkIcon
+                      className={`${isFavorite(movie?.id) ? "fill-white" : ""}`}
+                    ></BookmarkIcon>
+                    {!isFavorite(movie?.id)
+                      ? "Adicionar aos favoritos"
+                      : "Remover dos favoritos"}
                   </Button>
                   <Button className="h-12 uppercase font-extralight bg-gray-400 text-gray-800">
                     <VideoIcon></VideoIcon> Assistir trailer
