@@ -9,9 +9,7 @@ import {
   SelectValue,
 } from "../../components/ui/select";
 import { genres } from "../../shared/model/genres";
-import {
-  StarIcon,
-} from "lucide-react";
+import { StarIcon } from "lucide-react";
 import { MovieGrid } from "../movie-grid";
 
 const MoviedDiscoveryGrid = () => {
@@ -30,67 +28,69 @@ const MoviedDiscoveryGrid = () => {
 
   return (
     <div className="flex flex-col gap-4">
-        <h3 className="uppercase font-black text-xl text-white md:text-2xl inter-title">
-          Filtros avançados
-        </h3>
-      <div className="flex flex-col md:flex-row gap-2 md:gap-4 p-2 md:p-4 border border-gray-400 rounded-sm">
+      <h3 className="uppercase font-black text-xl text-white md:text-2xl inter-title">
+        Filtros avançados
+      </h3>
+      <div className="flex flex-col md:flex-row gap-2 md:gap-4">
         <legend className="text-gray-400 text-sm">Filtrar por:</legend>
 
-        <Select onValueChange={setGenre}>
-          <SelectTrigger className="w-full max-w-48 bg-gray-300 h-12!">
-            <SelectValue placeholder="GÊNERO" />
-          </SelectTrigger>
+        <div className="flex gap-2">
+          <Select onValueChange={setGenre}>
+            <SelectTrigger className="w-full max-w-48 bg-gray-300 h-12!">
+              <SelectValue placeholder="GÊNERO" />
+            </SelectTrigger>
 
-          <SelectContent className="bg-gray-300">
-            <SelectGroup>
-              {genres.map((g) => (
-                <SelectItem key={g.id} value={String(g.id)}>
-                  {g.name}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-        <Select onValueChange={setYear}>
-          <SelectTrigger className="w-full max-w-48 bg-gray-300 h-12!">
-            <SelectValue placeholder="ANO" />
-          </SelectTrigger>
-
-          <SelectContent className="bg-gray-300">
-            <SelectGroup>
-              {Array.from({ length: 2026 - 1950 + 1 }, (_, i) => {
-                const year = 2026 - i;
-
-                return (
-                  <SelectItem key={year} value={String(year)}>
-                    {year}
+            <SelectContent className="bg-gray-300">
+              <SelectGroup>
+                {genres.map((g) => (
+                  <SelectItem key={g.id} value={String(g.id)}>
+                    {g.name}
                   </SelectItem>
-                );
-              })}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+          <Select onValueChange={setYear}>
+            <SelectTrigger className="w-full max-w-48 bg-gray-300 h-12!">
+              <SelectValue placeholder="ANO" />
+            </SelectTrigger>
 
-        <Select onValueChange={setRating}>
-          <SelectTrigger className="w-full max-w-48 bg-gray-300 h-12!">
-            <SelectValue placeholder="AVALIAÇÃO" />
-          </SelectTrigger>
+            <SelectContent className="bg-gray-300">
+              <SelectGroup>
+                {Array.from({ length: 2026 - 1950 + 1 }, (_, i) => {
+                  const year = 2026 - i;
 
-          <SelectContent className="bg-gray-300">
-            <SelectGroup>
-              {Array.from({ length: 10 }, (_, i) => {
-                const value = i + 1;
+                  return (
+                    <SelectItem key={year} value={String(year)}>
+                      {year}
+                    </SelectItem>
+                  );
+                })}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
 
-                return (
-                  <SelectItem key={value} value={String(value)}>
-                    <StarIcon className="fill-foreground" />
-                    {value}
-                  </SelectItem>
-                );
-              })}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+          <Select onValueChange={setRating}>
+            <SelectTrigger className="w-full max-w-48 bg-gray-300 h-12!">
+              <SelectValue placeholder="AVALIAÇÃO" />
+            </SelectTrigger>
+
+            <SelectContent className="bg-gray-300">
+              <SelectGroup>
+                {Array.from({ length: 10 }, (_, i) => {
+                  const value = i + 1;
+
+                  return (
+                    <SelectItem key={value} value={String(value)}>
+                      <StarIcon className="fill-foreground" />
+                      {value}
+                    </SelectItem>
+                  );
+                })}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
 
       {data?.total_results === 0 ? (
