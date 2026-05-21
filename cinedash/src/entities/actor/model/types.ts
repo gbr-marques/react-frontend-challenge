@@ -14,7 +14,8 @@ export type ICreditedPerson = {
 };
 
 export type ICreditsList = {
-    id: number
-    cast: ICreditedPerson[]
-    crew: ICreditedPerson[]
-}
+  id: number;
+  cast: ICreditedPerson[];
+  crew: ICreditedPerson[];
+};
+
