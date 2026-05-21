@@ -20,10 +20,13 @@ const MovieSearchGrid = () => {
 
   const debouncedTitle = useDebounce(title, 1000);
 
-  const { data, isLoading, error } = useSearchedMovies({
-    query: debouncedTitle,
-    page,
-  });
+  const { data, isLoading, error } = useSearchedMovies(
+    {
+      query: debouncedTitle,
+      page,
+    },
+    debouncedTitle !== "",
+  );
 
   return (
     <>
@@ -38,7 +41,15 @@ const MovieSearchGrid = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        {data?.total_results === 0 && debouncedTitle !== "" ? (
+
+        {debouncedTitle === "" ? (
+          <div className="h-75 flex items-center justify-center text-xl leading-tight text-center text-white font-bold">
+            <span className="w-4/5 flex gap-4 items-center">
+              Digite o título do filme para realizar uma pesquisa
+              <SearchIcon size={48} className="stroke-3"></SearchIcon>
+            </span>{" "}
+          </div>
+        ) : data?.total_results === 0 ? (
           <div className="h-75 flex items-center justify-center text-xl leading-tight text-center text-white font-bold">
             <span className="w-4/5 flex gap-4 items-center">
               "Nenhum resultado encontrado para o título pesquisado..."
@@ -53,14 +64,6 @@ const MovieSearchGrid = () => {
             totalPages={data?.total_pages}
             setPage={setPage}
           />
-        )}
-        {debouncedTitle === "" && (
-          <div className="h-75 flex items-center justify-center text-xl leading-tight text-center text-white font-bold">
-            <span className="w-4/5 flex gap-4 items-center">
-              Digite o título do filme para realizar uma pesquisa
-              <SearchIcon size={48} className="stroke-3"></SearchIcon>
-            </span>{" "}
-          </div>
         )}
       </div>
     </>

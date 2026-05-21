@@ -7,10 +7,11 @@ type IParams = {
   page: number;
 };
 
-export function useSearchedMovies(searchParams: IParams) {
+export function useSearchedMovies(searchParams: IParams, enabled: boolean) {
   return useQuery({
     queryKey: ["search", "movies", searchParams],
     queryFn: () => fetchSearchedMovies(searchParams),
+    enabled,
   });
 }
 
