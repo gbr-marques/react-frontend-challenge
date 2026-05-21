@@ -42,7 +42,11 @@ export function LoginPage() {
   const { mutate, isPending } = useAuthentication();
 
   const onFormSubmit = (data: ILogin) => {
-    mutate(data);
+    mutate(data, {
+      onSuccess: () => {
+        navigate({ to: "/home" });
+      },
+    });
   };
 
   return (
