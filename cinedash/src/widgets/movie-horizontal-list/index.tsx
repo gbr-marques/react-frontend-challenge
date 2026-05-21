@@ -23,11 +23,20 @@ const MovieHorizontalList = ({
 }: Props) => {
   const { watchlist } = useWatchlistStore();
 
-  const { data, isLoading } = usePopularMovies(displayMode === "popular");
+  const navigate = useNavigate();
+
+  const { data, isLoading, error, refetch } = usePopularMovies(
+    displayMode === "popular",
+  );
 
   const movieList = displayMode === "popular" ? data?.results || [] : watchlist;
 
-  const navigate = useNavigate();
+  const isWatchlistEmpty =
+    displayMode === "watchlist" && movieList.length === 0;
+
+  const hasPopularError = displayMode === "popular" && error;
+
+  const isPopularLoading = displayMode === "popular" && isLoading;
 
   return (
     <>
@@ -37,34 +46,59 @@ const MovieHorizontalList = ({
             {title}
           </h3>
           {showHyperlink && (
-            <Link to={hyperlinkRoute} className="text-xs md:text-sm text-gray-400">
+            <Link
+              to={hyperlinkRoute}
+              className="text-xs md:text-sm text-gray-400"
+            >
               Ver mais...
             </Link>
           )}
         </div>
         <div className="flex gap-2 md:gap-4 overflow-x-auto pb-4 h-60 md:h-80 w-full [mask-image:linear-gradient(to_right,black_90%,transparent)]">
-          {isLoading
-            ? Array.from({ length: 8 }).map((_, i) => (
-                <MovieCardSkeleton key={i} />
-              ))
-            : movieList?.map((movie: IMovie) => (
-                <MovieCard movie={movie} key={movie.id}></MovieCard>
-              ))}
-          {movieList.length == 0 && displayMode == "watchlist" && (
-            <div className="w-full text-center leading-tight flex flex-col gap-2 md:gap-4 justify-center items-center p-4">
-              <h3 className="w-fit! flex text-xl md:text-2xl font-bold items-center justify-center">
+          {isWatchlistEmpty && (
+            <div className="flex w-full flex-col items-center justify-center gap-2 p-4 text-center leading-tight md:gap-4">
+              <h3 className="text-xl font-bold md:text-2xl">
                 Parece que sua lista está vazia...
               </h3>
+
               <p>
-                Que tal explorar a sessão 'Descobertas' para conhecer alguns filmes que
-                possam ser adicionados à ela?
+                Que tal explorar a sessão "Descobertas" para conhecer alguns
+                filmes que possam ser adicionados à ela?
               </p>
+
               <Button
                 onClick={() => navigate({ to: "/discover" })}
-                variant={"secondary"}
+                variant="secondary"
                 className="h-12"
               >
-                Descobertas <StarsIcon></StarsIcon>
+                Descobertas <StarsIcon />
+              </Button>
+            </div>
+          )}
+
+          {isPopularLoading &&
+            Array.from({ length: 8 }).map((_, i) => (
+              <MovieCardSkeleton key={i} />
+            ))}
+
+          {!isPopularLoading &&
+            !hasPopularError &&
+            movieList.map((movie: IMovie) => (
+              <MovieCard movie={movie} key={movie.id} />
+            ))}
+
+          {hasPopularError && (
+            <div className="flex w-full flex-col items-center justify-center gap-2 p-4 text-center leading-tight md:gap-4">
+              <h3 className="text-xl font-bold md:text-2xl">Ops...</h3>
+
+              <p>Ocorreu um erro ao buscar os filmes do momento.</p>
+
+              <Button
+                onClick={() => refetch()}
+                variant="secondary"
+                className="h-12"
+              >
+                Tentar novamente
               </Button>
             </div>
           )}
