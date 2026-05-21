@@ -9,8 +9,6 @@ type Props = {
 export function CastList({ movieID }: Props) {
   const { data, isLoading, error } = useCreditsList(movieID);
 
-  console.log("Movie ID ", movieID);
-
   return (
     <>
       <div className="flex flex-wrap gap-1">
