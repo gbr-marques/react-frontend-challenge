@@ -7,6 +7,7 @@ type IFilters = {
   genre?: string;
   rating?: string;
   title?: string;
+  page: number
 };
 
 export function useFilteredMovies(filters: IFilters) {
