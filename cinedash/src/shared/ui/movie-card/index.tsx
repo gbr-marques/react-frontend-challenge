@@ -38,7 +38,7 @@ export function MovieCard({ movie }: Props) {
           </p>
           <Separator></Separator>
           <div className="flex gap-2">
-            <Button
+            {/* <Button
               variant={"ghost"}
               onClick={() =>
                 !isFavorite(movie.id) ? addMovie(movie) : removeMovie(movie?.id)
@@ -47,7 +47,7 @@ export function MovieCard({ movie }: Props) {
               <BookmarkIcon
                 className={`${isFavorite(movie?.id) ? "fill-white" : ""}`}
               />
-            </Button>
+            </Button> */}
             <Button
               onClick={() => navigate({ to: `/details/${movie?.id}` })}
               variant={"ghost"}
