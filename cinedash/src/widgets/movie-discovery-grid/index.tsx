@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { useDebounce } from "../../shared/lib/use-debounce";
 import { useFilteredMovies } from "../../entities/movie/api/use-filtered-movies";
-import { Input } from "../../components/ui/input";
 import {
   Select,
   SelectContent,
@@ -12,15 +10,8 @@ import {
 } from "../../components/ui/select";
 import { genres } from "../../shared/model/genres";
 import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  LoaderCircleIcon,
   StarIcon,
 } from "lucide-react";
-import { Button } from "../../components/ui/button";
-import MovieCard from "../../shared/ui/movie-card";
-import MovieCardSkeleton from "../../shared/ui/movie-card/skeleton";
-import type { IMovie } from "../../entities/movie/model/types";
 import { MovieGrid } from "../movie-grid";
 
 const MoviedDiscoveryGrid = () => {
