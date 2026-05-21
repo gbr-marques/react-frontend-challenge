@@ -18,8 +18,8 @@ export function DiscoverPage() {
         {/* <PopularMoviesGrid></PopularMoviesGrid> */}
         {/* <MovieHorizontalList displayMode="popular" title="Destaques do momento" showHyperlink={false}></MovieHorizontalList> */}
         {/* <Separator></Separator> */}
-        {/* <MoviedDiscoveryGrid></MoviedDiscoveryGrid> */}
-        <MovieSearchGrid></MovieSearchGrid>
+        <MoviedDiscoveryGrid></MoviedDiscoveryGrid>
+        {/* <MovieSearchGrid></MovieSearchGrid> */}
       </section>
     </>
   );

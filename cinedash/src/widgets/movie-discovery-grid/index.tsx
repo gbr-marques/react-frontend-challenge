@@ -100,13 +100,17 @@ const MoviedDiscoveryGrid = () => {
         </Select>
       </div>
 
-      <MovieGrid
-        movies={data?.results}
-        isLoading={isLoading}
-        page={page}
-        totalPages={data?.total_pages}
-        setPage={setPage}
-      />
+      {data?.total_results === 0 ? (
+        <span>Nenhum filme encontrado para os filtros escolhidos...</span>
+      ) : (
+        <MovieGrid
+          movies={data?.results}
+          isLoading={isLoading}
+          page={page}
+          totalPages={data?.total_pages}
+          setPage={setPage}
+        />
+      )}
     </div>
   );
 };
