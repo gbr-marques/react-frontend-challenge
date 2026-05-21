@@ -9,16 +9,28 @@ import {
   XIcon,
 } from "lucide-react";
 import { Button } from "../../components/ui/button";
-import { flexRender, getCoreRowModel, getPaginationRowModel, getSortedRowModel, useReactTable, type Row } from "@tanstack/react-table";
+import {
+  flexRender,
+  getCoreRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+  type Row,
+} from "@tanstack/react-table";
 import type { IGenre, IMovie } from "../../entities/movie/model/types";
 import moment from "moment";
 import { useNavigate } from "@tanstack/react-router";
 import { useWatchlistStore } from "../../features/watchlist/use-watchlist-store";
 import { Badge } from "../../components/ui/badge";
+import { useState } from "react";
 
 const WatchlistTable = () => {
   const { watchlist, removeMovie } = useWatchlistStore();
+
   const navigate = useNavigate();
+
+  const data = watchlist;
+
   const columns = [
     {
       accessorKey: "poster_path",
@@ -29,7 +41,7 @@ const WatchlistTable = () => {
           <img
             src={`https://image.tmdb.org/t/p/w500/${props.getValue()}`}
             alt="Poster do filme"
-            className="h-32 aspect-[65/98]! rounded-sm border border-[#1d242aea] shadow-lg"
+            className="h-24 aspect-[65/98]! rounded-sm border border-[#1d242aea] shadow-lg"
           />{" "}
         </div>
       ),
@@ -53,7 +65,7 @@ const WatchlistTable = () => {
       accessorKey: "genres",
       header: "Gêneros",
       cell: (props: any) => (
-        <div className="flex flex-wrap gap-1 p-2">
+        <div className="flex flex-wrap gap-1 p-2 max-w-64">
           {props.getValue().map((genre: IGenre) => (
             <Badge className="rounded-xs text-gray-400">{genre.name}</Badge>
           ))}
@@ -100,11 +112,18 @@ const WatchlistTable = () => {
     },
   ];
 
-  const data = watchlist;
+  const [pagination, setPagination] = useState({
+    pageIndex: 0,
+    pageSize: 5,
+  });
 
   const table = useReactTable({
     data,
     columns,
+    state: {
+      pagination,
+    },
+    onPaginationChange: setPagination,
     getCoreRowModel: getCoreRowModel(), //row model
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
