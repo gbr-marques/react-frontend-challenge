@@ -22,7 +22,7 @@ export function DiscoverPage() {
           </p>
         </div>
         <Tabs defaultValue="popular" className="flex flex-col gap-4">
-          <TabsList className="bg-gray-300! w-full! md:w-auto">
+          <TabsList className="bg-gray-300! w-full! md:w-fit! md:flex md:gap-2">
             <TabsTrigger value="popular">Os mais populares</TabsTrigger>
             <TabsTrigger value="search">Buscar por título</TabsTrigger>
             <TabsTrigger value="filters">Filtros avançados</TabsTrigger>
