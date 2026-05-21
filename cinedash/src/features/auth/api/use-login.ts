@@ -6,4 +6,7 @@ export function useAuthentication(formData) {
   });
 }
 
-async function logUser(formData) {}
+async function logUser(formData) {
+  const sessionToken = crypto.randomUUID();
+  localStorage.setItem("token", sessionToken);
+}
