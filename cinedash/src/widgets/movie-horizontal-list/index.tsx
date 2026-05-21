@@ -32,17 +32,17 @@ const MovieHorizontalList = ({
   return (
     <>
       <div className="flex flex-col gap-2 text-white">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-baseline">
           <h3 className="uppercase font-black text-xl md:text-2xl inter-title">
             {title}
           </h3>
           {showHyperlink && (
-            <Link to={hyperlinkRoute} className="text-sm text-grey-400">
+            <Link to={hyperlinkRoute} className="text-xs md:text-sm text-gray-400">
               Ver mais...
             </Link>
           )}
         </div>
-        <div className="flex gap-2 md:gap-4 overflow-x-scroll pb-4 h-60 md:h-80 w-full">
+        <div className="flex gap-2 md:gap-4 overflow-x-auto pb-4 h-60 md:h-80 w-full [mask-image:linear-gradient(to_right,black_90%,transparent)]">
           {isLoading
             ? Array.from({ length: 8 }).map((_, i) => (
                 <MovieCardSkeleton key={i} />
@@ -51,7 +51,7 @@ const MovieHorizontalList = ({
                 <MovieCard movie={movie} key={movie.id}></MovieCard>
               ))}
           {movieList.length == 0 && displayMode == "watchlist" && (
-            <div className="w-full text-center leading-tight flex flex-col gap-2 md:gap-4 justify-center items-center">
+            <div className="w-full text-center leading-tight flex flex-col gap-2 md:gap-4 justify-center items-center p-4">
               <h3 className="w-fit! flex text-xl md:text-2xl font-bold items-center justify-center">
                 Parece que sua lista está vazia...
               </h3>
