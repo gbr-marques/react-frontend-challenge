@@ -51,14 +51,14 @@ export function LoginPage() {
 
   return (
     <section className="flex min-h-screen items-center justify-center p-4">
-      <div className="bg-[#1D242A] flex rounded-md shadow-lg min-h-150 overflow-hidden">
+      <div className="bg-[#1D242A] w-full max-w-[1000px] flex rounded-md shadow-lg overflow-hidden">
         <div className="w-1/2 bg-red-400 hidden md:block"></div>
-        <div className="flex flex-col items-center justify-center text-center gap-4 p-4 md:p-8 text-white leading-tight md:w-1/2">
+        <div className="h-fit flex flex-col items-center justify-center text-center gap-4 p-2 md:p-4 text-white leading-tight md:w-1/2">
           <img src={logo} alt="Logo do CineDash" className="w-[60%] max-w-64" />
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-2xl font-bold georgia">
             A sua plataforma de curadoria e descoberta de filmes
           </h1>
-          <p className="font-extralight">
+          <p>
             Lorem ipsum dolor sit amet consectetur. Egestas sit felis aenean
             tincidunt sem. Hendrerit consequat id diam quam dignissim
             pellentesque quam ultrices sed.
