@@ -20,6 +20,8 @@ import {
 import { Button } from "../../components/ui/button";
 import MovieCard from "../../shared/ui/movie-card";
 import MovieCardSkeleton from "../../shared/ui/movie-card/skeleton";
+import type { IMovie } from "../../entities/movie/model/types";
+import { MovieGrid } from "../movie-grid";
 
 const MoviedDiscoveryGrid = () => {
   const [year, setYear] = useState<string>();
@@ -27,9 +29,6 @@ const MoviedDiscoveryGrid = () => {
   const [rating, setRating] = useState<string>();
 
   const [page, setPage] = useState<number>(1);
-  // const [title, setTitle] = useState("");
-
-  // const debouncedTitle = useDebounce(title, 500);
 
   const { data, isLoading, error } = useFilteredMovies({
     year,
@@ -40,15 +39,6 @@ const MoviedDiscoveryGrid = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      {/* INPUT */}
-      {/* <Input
-        className="bg-white h-12 md:w-150"
-        type="text"
-        placeholder="Pesquise pelo nome do filme..."
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      /> */}
-
       {/* FILTROS */}
       <div className="flex flex-col md:flex-row gap-2 md:gap-4 p-2 md:p-4 border border-gray-400 rounded-sm">
         <legend className="text-gray-400 text-sm">Filtrar por:</legend>
@@ -110,45 +100,13 @@ const MoviedDiscoveryGrid = () => {
         </Select>
       </div>
 
-      {/* GRID */}
-      <div className="grid grid-cols-4 md:grid-cols-6 gap-2 md:gap-4 w-full">
-        {isLoading
-          ? Array.from({ length: 20 }).map((_, i) => (
-              <MovieCardSkeleton></MovieCardSkeleton>
-            ))
-          : data.results?.map((movie: IMovie) => (
-              <MovieCard key={movie.id} movie={movie} />
-            ))}
-      </div>
-
-      {/* PAGINAÇÃO */}
-      <div className="flex items-center justify-between">
-        <Button
-          className="bg-gray-400 h-12 uppercase font-extralight text-gray-800"
-          onClick={() => setPage((currentPage) => (currentPage -= 1))}
-          disabled={page == 1 || isLoading}
-        >
-          {isLoading ? (
-            <LoaderCircleIcon className="animate-spin"></LoaderCircleIcon>
-          ) : (
-            <ArrowLeftIcon />
-          )}
-          Página anterior
-        </Button>
-        {page}
-        <Button
-          className="bg-gray-400 h-12 uppercase font-extralight text-gray-800"
-          onClick={() => setPage((currentPage) => (currentPage += 1))}
-          disabled={page == data?.total_pages || isLoading}
-        >
-          Próxima página{" "}
-          {isLoading ? (
-            <LoaderCircleIcon className="animate-spin"></LoaderCircleIcon>
-          ) : (
-            <ArrowRightIcon />
-          )}
-        </Button>
-      </div>
+      <MovieGrid
+        movies={data?.results}
+        isLoading={isLoading}
+        page={page}
+        totalPages={data?.total_pages}
+        setPage={setPage}
+      />
     </div>
   );
 };
