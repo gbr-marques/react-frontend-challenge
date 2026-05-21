@@ -20,8 +20,8 @@ export function LoginPage() {
   };
 
   const schema = z.object({
-    email: z.string().email("O e-mail digitado deve ser um e-mail válido"),
-    password: z.string().min(6, "A senha deve conter, no mínimo, 6 caracteres"),
+    email: z.string().min(1, 'O campo e-mail é obrigatório').email("O e-mail digitado deve ser um e-mail válido"),
+    password: z.string().min(1, 'O campo senha é obrigatório').min(6, "A senha deve conter, no mínimo, 6 caracteres"),
   });
 
   const {
@@ -62,7 +62,9 @@ export function LoginPage() {
                 {...login("email")}
               />
 
-              <p className="text-red-500 text-sm text-start">{errors.email?.message}</p>
+              <p className="text-red-500 text-sm text-start">
+                {errors.email?.message}
+              </p>
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="password-toggle">Senha</Label>
@@ -88,16 +90,15 @@ export function LoginPage() {
                   )}
                 </Button>
               </div>
-              <p className="text-red-500 text-sm text-start">{errors.password?.message}</p>
+              <p className="text-red-500 text-sm text-start">
+                {errors.password?.message}
+              </p>
             </div>
 
             <span className="w-full flex gap-2 text-sm items-center text-gray-400">
               <Checkbox></Checkbox> Mantenha-me conectado{" "}
             </span>
-            <Button
-              className="bg-[#F98635] w-full h-12"
-              type="submit"
-            >
+            <Button className="bg-[#F98635] w-full h-12" type="submit">
               Entrar
             </Button>
           </form>
