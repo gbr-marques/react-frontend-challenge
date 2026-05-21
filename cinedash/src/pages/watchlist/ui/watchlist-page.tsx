@@ -22,9 +22,12 @@ import {
 import { Button } from "../../../components/ui/button";
 import { useWatchlistStore } from "../../../features/watchlist/use-watchlist-store";
 import type { IGenre, IMovie } from "../../../entities/movie/model/types";
+import { useNavigate } from "@tanstack/react-router";
 
 export function WatchListPage() {
-  const { watchlist, isFavorite, addMovie, removeMovie } = useWatchlistStore();
+  const { watchlist, removeMovie } = useWatchlistStore();
+
+  const navigate = useNavigate()
 
   const columns = [
     {
