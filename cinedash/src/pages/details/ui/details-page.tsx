@@ -12,13 +12,16 @@ import { useMovieDetails } from "../../../entities/movie/api/use-movie-details";
 import moment from "moment";
 import { CastList } from "../../../widgets/cast-list";
 import { DetailsSkeleton } from "./details-skeleton";
+import { useWatchlistStore } from "../../../features/watchlist/use-watchlist-store";
 
 export function DetailsPage() {
   const { id } = Route.useParams();
 
-  const { data, isLoading, error } = useMovieDetails(id);
+  const { data: movie, isLoading, error } = useMovieDetails(id);
 
-  console.log(data);
+  const { addMovie, removeMovie, isFavorite } = useWatchlistStore();
+
+  console.log(movie);
 
   return (
     <>
@@ -31,7 +34,7 @@ export function DetailsPage() {
             rgba(29, 36, 42, 0.70) 0px,
             #1D242A ${window.innerWidth < 768 ? "250px" : "400px"}
           ),
-          url(https://image.tmdb.org/t/p/original${data?.backdrop_path})
+          url(https://image.tmdb.org/t/p/original${movie?.backdrop_path})
         `,
         }}
       >
@@ -40,49 +43,54 @@ export function DetailsPage() {
         ) : (
           <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center">
             <img
-              src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
               alt="Poster do filme"
               className="w-40 max-w-100 md:w-2/5 h-full rounded-sm border border-[#1d242aea] shadow-lg"
             />
             <div className="flex flex-col gap-2 max-w-150">
               <div className="flex items-end gap-2">
-                <h1 className="text-white text-3xl">{data?.title}</h1>
+                <h1 className="text-white text-3xl">{movie?.title}</h1>
                 <span className="text-gray-400 text-md font-extralight">
-                  {moment(data?.release_date).year()}
+                  {moment(movie?.release_date).year()}
                 </span>
               </div>
               <div className="flex items-end gap-2">
                 <span className="flex">
                   {Array.from({
-                    length: Math.round(Number(data?.vote_average)),
+                    length: Math.round(Number(movie?.vote_average)),
                   }).map(() => (
                     <Star className="text-yellow-300 fill-yellow-300 h-5"></Star>
                   ))}
                 </span>
                 <span className="text-sm text-gray-400 leading-tight">
-                  {data?.vote_average.toString().slice(0, 3)}
+                  {movie?.vote_average.toString().slice(0, 3)}
                 </span>
               </div>
               <span className="text-gray-400 font-extralight text-xl georgia-title">
-                {data?.tagline}
+                {movie?.tagline}
               </span>
               <span className="text-xs font-extralight text-gray-400 flex gap-1">
-                {data?.genres.map((genre) => (
+                {movie?.genres.map((genre) => (
                   <Badge className="bg-[#485568] rounded-xs font-extralight">
                     {genre.name}
                   </Badge>
                 ))}
               </span>
-              <p className="leading-tight text-white">{data?.overview}</p>
+              <p className="leading-tight text-white">{movie?.overview}</p>
               <div className="flex flex-col gap-2">
-                <h5 className="font-black uppercase text-white inter-title">Elenco</h5>
-                <CastList movieID={data?.id}></CastList>
+                <h5 className="font-black uppercase text-white inter-title">
+                  Elenco
+                </h5>
+                <CastList movieID={movie?.id}></CastList>
               </div>
               <div className="flex flex-col gap-2">
-                <h5 className="font-black uppercase text-white inter-title">Ações</h5>
+                <h5 className="font-black uppercase text-white inter-title">
+                  Ações
+                </h5>
                 <div className="flex gap-2">
+                  {}
                   <Button className="h-12 uppercase font-extralight bg bg-orange-500">
-                    <BookmarkIcon></BookmarkIcon> Adicionar aos favoritos
+                    <BookmarkIcon></BookmarkIcon> 
                   </Button>
                   <Button className="h-12 uppercase font-extralight bg-gray-400 text-gray-800">
                     <VideoIcon></VideoIcon> Assistir trailer
