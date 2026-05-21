@@ -1,4 +1,9 @@
-import { ArrowLeftIcon, ArrowRightIcon, LoaderCircleIcon } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  LoaderCircleIcon,
+  SearchIcon,
+} from "lucide-react";
 import MovieCardSkeleton from "../../shared/ui/movie-card/skeleton";
 import MovieCard from "../../shared/ui/movie-card";
 import { Button } from "../../components/ui/button";
@@ -33,12 +38,13 @@ const MovieSearchGrid = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        {data?.total_results === 0 ? (
-          <span>
-            {debouncedTitle === ""
-              ? "Digite o título do filme para realizar uma pesquisa..."
-              : "Nenhum resultado encontrado para o título pesquisado..."}
-          </span>
+        {data?.total_results === 0 && debouncedTitle !== "" ? (
+          <div className="h-75 flex items-center justify-center text-xl leading-tight text-center text-white font-bold">
+            <span className="w-4/5 flex gap-4 items-center">
+              "Nenhum resultado encontrado para o título pesquisado..."
+              <SearchIcon size={48} className="stroke-3"></SearchIcon>
+            </span>
+          </div>
         ) : (
           <MovieGrid
             movies={data?.results}
@@ -47,6 +53,14 @@ const MovieSearchGrid = () => {
             totalPages={data?.total_pages}
             setPage={setPage}
           />
+        )}
+        {debouncedTitle === "" && (
+          <div className="h-75 flex items-center justify-center text-xl leading-tight text-center text-white font-bold">
+            <span className="w-4/5 flex gap-4 items-center">
+              Digite o título do filme para realizar uma pesquisa
+              <SearchIcon size={48} className="stroke-3"></SearchIcon>
+            </span>{" "}
+          </div>
         )}
       </div>
     </>
