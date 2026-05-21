@@ -30,13 +30,21 @@ const MovieSearchGrid = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <MovieGrid
-          movies={data?.results}
-          isLoading={isLoading}
-          page={page}
-          totalPages={data?.total_pages}
-          setPage={setPage}
-        />
+        {data?.total_results === 0 ? (
+          <span>
+            {debouncedTitle === ""
+              ? "Digite o título do filme para realizar uma pesquisa..."
+              : "Nenhum resultado encontrado para o título pesquisado..."}
+          </span>
+        ) : (
+          <MovieGrid
+            movies={data?.results}
+            isLoading={isLoading}
+            page={page}
+            totalPages={data?.total_pages}
+            setPage={setPage}
+          />
+        )}
       </div>
     </>
   );

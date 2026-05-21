@@ -18,6 +18,7 @@ export function PopularMoviesGrid() {
         <h3 className="uppercase font-black text-xl text-white md:text-2xl inter-title">
           Filmes populares
         </h3>
+        
         <MovieGrid
           movies={data?.results}
           isLoading={isLoading}
