@@ -1,6 +1,7 @@
 import { Separator } from "../../../components/ui/separator";
 import MoviedDiscoveryGrid from "../../../widgets/movie-discovery-grid";
 import MovieHorizontalList from "../../../widgets/movie-horizontal-list";
+import { PopularMoviesGrid } from "../../../widgets/popular-movies-grid/ui/popular-movies-grid";
 
 export function DiscoverPage() {
   return (
@@ -13,7 +14,8 @@ export function DiscoverPage() {
             para compor o catálogo ideal.
           </p>
         </div>
-        <MovieHorizontalList displayMode="popular" title="Destaques do momento" showHyperlink={false}></MovieHorizontalList>
+        <PopularMoviesGrid></PopularMoviesGrid>
+        {/* <MovieHorizontalList displayMode="popular" title="Destaques do momento" showHyperlink={false}></MovieHorizontalList> */}
         <Separator></Separator>
         <MoviedDiscoveryGrid></MoviedDiscoveryGrid>
       </section>
