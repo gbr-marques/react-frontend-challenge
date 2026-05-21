@@ -25,7 +25,7 @@ const Footer = () => {
             <img
               src="https://media.licdn.com/dms/image/v2/D4D03AQGkNyGKX-XWFw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1690214133018?e=1781136000&v=beta&t=ap8-DzzlweIVGfl_1eWZDvhqpN30oh5mwyYTQj-Gnd4"
               alt="Foto do desenvolvedor"
-              className="h-32 w-32 rounded-full shadow-lg" 
+              className="h-32 w-32 rounded-full shadow-lg object-cover" 
             />
             <div className="text-center md:text-start flex flex-col gap-2">
               <h3 className="text-2xl georgia font-bold">

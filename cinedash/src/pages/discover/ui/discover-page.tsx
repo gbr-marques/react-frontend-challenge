@@ -24,11 +24,11 @@ export function DiscoverPage() {
               para compor o catálogo ideal.
             </p>
           </div>
-          <Tabs defaultValue="popular" className="flex flex-col gap-4">
-            <TabsList className="bg-gray-300! w-full! md:w-fit! md:flex md:gap-2">
-              <TabsTrigger value="popular">Os mais populares</TabsTrigger>
-              <TabsTrigger value="search">Buscar por título</TabsTrigger>
-              <TabsTrigger value="filters">Filtros avançados</TabsTrigger>
+          <Tabs defaultValue="popular" className="flex flex-col items-center gap-4">
+            <TabsList className="bg-gray-300! w-full! md:w-fit! md:flex md:gap-2 ">
+              <TabsTrigger className="text-xs md:text-sm" value="popular">Os mais populares</TabsTrigger>
+              <TabsTrigger className="text-xs md:text-sm" value="search">Buscar por título</TabsTrigger>
+              <TabsTrigger className="text-xs md:text-sm" value="filters">Filtros avançados</TabsTrigger>
             </TabsList>
             <TabsContent value="popular">
               <PopularMoviesGrid></PopularMoviesGrid>

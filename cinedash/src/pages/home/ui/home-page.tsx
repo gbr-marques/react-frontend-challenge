@@ -3,31 +3,34 @@ import MovieHorizontalList from "../../../widgets/movie-horizontal-list";
 export function HomePage() {
   return (
     <>
-      <section className="min-h-[75dvh] bg-[#1D242A] p-4 py-8 flex flex-col gap-8">
-        <div className="text-white text-center leading-tight flex flex-col items-center gap-4 ">
-          <h1 className="text-2xl md:text-4xl">
-            Bem-vindo, curador! Pronto para descobrir novos filmes?
-          </h1>
-          <p className="md:max-w-200 lg:max-w-250">
-            Esta é a homepage do CineDash, uma plataforma de curadoria e
-            descoberta de filmes desenvolvida para auxiliar equipes de streaming
-            na análise, organização e seleção de títulos. Aqui você pode
-            explorar tendências, descobrir novos filmes e acompanhar informações
-            relevantes para a construção de catálogos cinematográficos.
-          </p>
+      <section className="min-h-[75dvh] bg-[#1D242A] p-4 py-8 flex flex-col items-center gap-8">
+        <div className="w-full max-w-[1350px] flex flex-col gap-8">
+          <div className="text-white text-center leading-tight flex flex-col items-center gap-4 ">
+            <h1 className="text-2xl md:text-4xl font-bold georgia">
+              Bem-vindo, curador! Pronto para descobrir novos filmes?
+            </h1>
+            <p className="md:max-w-200 lg:max-w-250">
+              Esta é a homepage do CineDash, uma plataforma de curadoria e
+              descoberta de filmes desenvolvida para auxiliar equipes de
+              streaming na análise, organização e seleção de títulos. Aqui você
+              pode explorar tendências, descobrir novos filmes e acompanhar
+              informações relevantes para a construção de catálogos
+              cinematográficos.
+            </p>
+          </div>
+          <MovieHorizontalList
+            title="Filmes populares"
+            displayMode="popular"
+            showHyperlink={true}
+            hyperlinkRoute="/discover"
+          ></MovieHorizontalList>
+          <MovieHorizontalList
+            title="Sua lista de favoritos"
+            displayMode="watchlist"
+            showHyperlink={true}
+            hyperlinkRoute="/watchlist"
+          ></MovieHorizontalList>
         </div>
-        <MovieHorizontalList
-          title="Filmes populares"
-          displayMode="popular"
-          showHyperlink={true}
-          hyperlinkRoute="/discover"
-        ></MovieHorizontalList>
-        <MovieHorizontalList
-          title="Sua lista de favoritos"
-          displayMode="watchlist"
-          showHyperlink={true}
-          hyperlinkRoute="/watchlist"
-        ></MovieHorizontalList>
       </section>
     </>
   );
