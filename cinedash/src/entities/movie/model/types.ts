@@ -26,3 +26,14 @@ export type IGenre = {
   id: number
   name: string
 }
+
+export type IGenresResponse = {
+  genres: IGenre[]
+}
+
+export type IFilters = {
+  year?: string;
+  genre?: string;
+  rating?: string;
+  title?: string;
+};
