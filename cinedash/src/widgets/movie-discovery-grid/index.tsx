@@ -11,7 +11,12 @@ import {
   SelectValue,
 } from "../../components/ui/select";
 import { genres } from "../../shared/model/genres";
-import { ArrowLeftIcon, ArrowRightIcon, StarIcon } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  LoaderCircleIcon,
+  StarIcon,
+} from "lucide-react";
 import { Button } from "../../components/ui/button";
 import MovieCard from "../../shared/ui/movie-card";
 import MovieCardSkeleton from "../../shared/ui/movie-card/skeleton";
@@ -30,7 +35,7 @@ const MoviedDiscoveryGrid = () => {
     year,
     genre,
     rating,
-    page
+    page,
   });
 
   return (
@@ -121,17 +126,27 @@ const MoviedDiscoveryGrid = () => {
         <Button
           className="bg-gray-400 h-12 uppercase font-extralight text-gray-800"
           onClick={() => setPage((currentPage) => (currentPage -= 1))}
-          disabled={page == 1}
+          disabled={page == 1 || isLoading}
         >
-          <ArrowLeftIcon /> Página anterior
+          {isLoading ? (
+            <LoaderCircleIcon className="animate-spin"></LoaderCircleIcon>
+          ) : (
+            <ArrowLeftIcon />
+          )}
+          Página anterior
         </Button>
         {page}
         <Button
           className="bg-gray-400 h-12 uppercase font-extralight text-gray-800"
           onClick={() => setPage((currentPage) => (currentPage += 1))}
-          disabled={page == data?.total_pages}
+          disabled={page == data?.total_pages || isLoading}
         >
-          Próxima página <ArrowRightIcon />
+          Próxima página{" "}
+          {isLoading ? (
+            <LoaderCircleIcon className="animate-spin"></LoaderCircleIcon>
+          ) : (
+            <ArrowRightIcon />
+          )}
         </Button>
       </div>
     </div>
