@@ -4,6 +4,7 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
+  type Row,
 } from "@tanstack/react-table";
 import {
   ResizablePanel,
@@ -15,167 +16,71 @@ import {
   ArrowUpDownIcon,
   SortAscIcon,
   SortDescIcon,
+  SquareArrowOutUpRight,
+  XIcon,
 } from "lucide-react";
 import { Button } from "../../../components/ui/button";
-
-const data = [
-  {
-    firstName: "Tanner",
-    lastName: "Linsley",
-    age: 33,
-    visits: 100,
-    progress: 50,
-    status: "Married",
-  },
-  {
-    firstName: "Kevin",
-    lastName: "Vandy",
-    age: 27,
-    visits: 200,
-    progress: 100,
-    status: "Single",
-  },
-   {
-    firstName: "Kevin",
-    lastName: "Vandy",
-    age: 27,
-    visits: 200,
-    progress: 100,
-    status: "Single",
-  },
-   {
-    firstName: "Kevin",
-    lastName: "Vandy",
-    age: 27,
-    visits: 200,
-    progress: 100,
-    status: "Single",
-  },
-   {
-    firstName: "Kevin",
-    lastName: "Vandy",
-    age: 27,
-    visits: 200,
-    progress: 100,
-    status: "Single",
-  },
-   {
-    firstName: "Kevin",
-    lastName: "Vandy",
-    age: 27,
-    visits: 200,
-    progress: 100,
-    status: "Single",
-  },
-   {
-    firstName: "Kevin",
-    lastName: "Vandy",
-    age: 27,
-    visits: 200,
-    progress: 100,
-    status: "Single",
-  },
-   {
-    firstName: "Kevin",
-    lastName: "Vandy",
-    age: 27,
-    visits: 200,
-    progress: 100,
-    status: "Single",
-  },
-   {
-    firstName: "Kevin",
-    lastName: "Vandy",
-    age: 27,
-    visits: 200,
-    progress: 100,
-    status: "Single",
-  },
-   {
-    firstName: "Kevin",
-    lastName: "Vandy",
-    age: 27,
-    visits: 200,
-    progress: 100,
-    status: "Single",
-  },
-   {
-    firstName: "Kevin",
-    lastName: "Vandy",
-    age: 27,
-    visits: 200,
-    progress: 100,
-    status: "Single",
-  },
-   {
-    firstName: "Kevin",
-    lastName: "Vandy",
-    age: 27,
-    visits: 200,
-    progress: 100,
-    status: "Single",
-  },
-   {
-    firstName: "Kevin",
-    lastName: "Vandy",
-    age: 27,
-    visits: 200,
-    progress: 100,
-    status: "Single",
-  },
-   {
-    firstName: "Kevin",
-    lastName: "Vandy",
-    age: 27,
-    visits: 200,
-    progress: 100,
-    status: "Single",
-  },
-   {
-    firstName: "Kevin",
-    lastName: "Vandy",
-    age: 27,
-    visits: 200,
-    progress: 100,
-    status: "Single",
-  },
-];
-
-const columns = [
-  {
-    accessorKey: "firstName",
-    header: "Primeiro nome",
-    enableSorting: false,
-    cell: (props: any) => <p>{props.getValue()}</p>,
-  },
-  {
-    accessorKey: "lastName",
-    header: "Último nome",
-    cell: (props: any) => <p>{props.getValue()}</p>,
-  },
-  {
-    accessorKey: "age",
-    header: "Idade",
-    cell: (props: any) => <p>{props.getValue()}</p>,
-  },
-  {
-    accessorKey: "visits",
-    header: "Visitas",
-    cell: (props: any) => <p>{props.getValue()}</p>,
-  },
-  {
-    accessorKey: "progress",
-    header: "Progress",
-    cell: (props: any) => <p>{props.getValue()}</p>,
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
-    cell: (props: any) => <p>{props.getValue()}</p>,
-  },
-];
+import { useWatchlistStore } from "../../../features/watchlist/use-watchlist-store";
+import type { IGenre, IMovie } from "../../../entities/movie/model/types";
 
 export function WatchListPage() {
+  const { watchlist, isFavorite, addMovie, removeMovie } = useWatchlistStore();
+
+  const columns = [
+    {
+      accessorKey: "title",
+      header: "Título",
+      cell: (props: any) => <p>{props.getValue()}</p>,
+    },
+    {
+      accessorKey: "release_date",
+      header: "Ano de lançamento",
+      cell: (props: any) => <p>{props.getValue()}</p>,
+    },
+    {
+      accessorKey: "genres",
+      header: "Gêneros",
+      cell: (props: any) => (
+        <p>{props.getValue().map((genre: IGenre) => genre.name)}</p>
+      ),
+    },
+    {
+      accessorKey: "vote_average",
+      header: "Média de avaliações",
+      cell: (props: any) => <p>{props.getValue()}</p>,
+    },
+    {
+      header: "Ações",
+      cell: ({ row }: { row: Row<IMovie> }) => {
+        const movie = row.original;
+
+        return (
+          <div className="flex gap-2 w-full justify-center">
+            <Button
+              className="cursor-pointer"
+              onClick={() => removeMovie(movie.id)}
+            >
+              <XIcon /> {movie.title}
+            </Button>
+
+            <Button
+              className="cursor-pointer"
+              onClick={() =>
+                navigate({
+                  to: `/details/${movie.id}`,
+                })
+              }
+            >
+              <SquareArrowOutUpRight />
+            </Button>
+          </div>
+        );
+      },
+    },
+  ];
+
+  const data = watchlist;
+
   const table = useReactTable({
     data,
     columns,
@@ -196,6 +101,7 @@ export function WatchListPage() {
             acompanhamento e análise. Organize títulos promissores, revisite
             descobertas importantes e acompanhe produções que podem integrar o
             catálogo da plataforma.
+            {watchlist.toString()}
           </p>
         </div>
         <table className="table border border-gray-400 rounded-xl">
@@ -241,7 +147,7 @@ export function WatchListPage() {
           <Button
             disabled={!table.getCanPreviousPage()}
             onClick={() => {
-                table.previousPage()
+              table.previousPage();
             }}
             className="bg-gray-400 h-12 uppercase font-extralight text-gray-800"
           >
@@ -250,15 +156,14 @@ export function WatchListPage() {
           <Button
             disabled={!table.getCanNextPage()}
             onClick={() => {
-              table.nextPage()
+              table.nextPage();
             }}
             className="bg-gray-400 h-12 uppercase font-extralight text-gray-800"
           >
             Próxima página <ArrowRightIcon></ArrowRightIcon>
           </Button>
         </div>
-        <div>
-        </div>
+        <div></div>
       </section>
     </>
   );
