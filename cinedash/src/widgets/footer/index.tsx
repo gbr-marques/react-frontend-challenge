@@ -7,16 +7,13 @@ const Footer = () => {
       <footer className="w-full p-4 md:h-[15dvh] md:p-8 bg-[#14181c] text-white flex flex-col md:flex-row items-center justify-between gap-4">
         <ul className="text-center md:text-start uppercase flex flex-col gap-2">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/home">Home</Link>
           </li>
           <li>
-            <Link to="/">Descobertas</Link>
+            <Link to="/discover">Descobertas</Link>
           </li>
           <li>
-            <Link to="/">Estante</Link>
-          </li>
-          <li>
-            <Link to="/">API</Link>
+            <Link to="/watchlist">Estante</Link>
           </li>
         </ul>
 
@@ -26,12 +23,12 @@ const Footer = () => {
             Placeholder de imagem
           </div>
           <div className="text-center md:text-start flex flex-col gap-2">
-            <h3>Sobre o desenvolvedor</h3>
+            <h3 className="text-2xl">Sobre o desenvolvedor</h3>
             <p className="leading-tight font-light text-sm">
-              Lorem ipsum dolor sit amet consectetur. Adipiscing lobortis
-              habitasse malesuada faucibus vulputate. Mattis diam pharetra sit
-              porttitor aenean senectus morbi vestibulum. Nulla ut nibh egestas
-              tincidunt a justo. Lobortis neque eu dui odio in.
+              24 anos, atua no front-end criando interfaces web com foco em
+              experiência e usabilidade. Fã de <i>Jurassic Park</i> e, diferente de
+              John Hammond, precisa poupar despesas com uma frequência maior do
+              que gostaria.
             </p>
             <ul className="flex justify-center md:justify-start gap-8">
               <li>Linkedin</li>
