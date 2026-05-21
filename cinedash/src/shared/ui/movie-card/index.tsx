@@ -1,7 +1,4 @@
-import {
-  BookmarkIcon,
-  SquareArrowOutUpRight,
-} from "lucide-react";
+import { BookmarkIcon, SquareArrowOutUpRight } from "lucide-react";
 import {
   HoverCard,
   HoverCardContent,
@@ -12,14 +9,16 @@ import { Toggle } from "../../../components/ui/toggle";
 import { Button } from "../../../components/ui/button";
 import { useNavigate } from "@tanstack/react-router";
 import type { IMovie } from "../../../entities/movie/model/types";
+import { useWatchlistStore } from "../../../features/watchlist/use-watchlist-store";
 
 type Props = {
   movie: IMovie;
 };
 
 export function MovieCard({ movie }: Props) {
-  
   const navigate = useNavigate();
+
+  const { isFavorite, addMovie, removeMovie } = useWatchlistStore();
 
   return (
     <>
@@ -39,10 +38,20 @@ export function MovieCard({ movie }: Props) {
           </p>
           <Separator></Separator>
           <div className="flex gap-2">
-            <Toggle>
-              <BookmarkIcon className="group-data-[state=on]/toggle:fill-foreground" />
-            </Toggle>
-            <Button onClick={() => navigate({ to: `/details/${movie?.id}` })} variant={"ghost"}>
+            <Button
+              variant={"ghost"}
+              onClick={() =>
+                !isFavorite(movie.id) ? addMovie(movie) : removeMovie(movie?.id)
+              }
+            >
+              <BookmarkIcon
+                className={`${isFavorite(movie?.id) ? "fill-white" : ""}`}
+              />
+            </Button>
+            <Button
+              onClick={() => navigate({ to: `/details/${movie?.id}` })}
+              variant={"ghost"}
+            >
               <SquareArrowOutUpRight></SquareArrowOutUpRight>
             </Button>
           </div>
