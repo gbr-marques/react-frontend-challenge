@@ -9,7 +9,7 @@ type IWatchlistStore = {
 
   removeMovie: (movieID: number) => void;
 
-  isFavorite: (movieID: number) => void;
+  isFavorite: (movieID: number | undefined) => void;
 };
 
 export const useWatchlistStore = create<IWatchlistStore>()(
