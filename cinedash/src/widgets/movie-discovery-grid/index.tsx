@@ -11,6 +11,7 @@ import {
 import { genres } from "../../shared/model/genres";
 import { StarIcon } from "lucide-react";
 import { MovieGrid } from "../movie-grid";
+import { Button } from "../../components/ui/button";
 
 const MoviedDiscoveryGrid = () => {
   const [year, setYear] = useState<string>();
@@ -19,7 +20,7 @@ const MoviedDiscoveryGrid = () => {
 
   const [page, setPage] = useState<number>(1);
 
-  const { data, isLoading, error } = useFilteredMovies({
+  const { data, isLoading, error, refetch } = useFilteredMovies({
     year,
     genre,
     rating,
@@ -31,7 +32,7 @@ const MoviedDiscoveryGrid = () => {
       <h3 className="uppercase font-black text-xl text-white md:text-2xl inter-title">
         Filtros avançados
       </h3>
-      <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+      <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-center">
         <legend className="text-gray-400 text-sm">Filtrar por:</legend>
 
         <div className="flex gap-2">
@@ -94,7 +95,27 @@ const MoviedDiscoveryGrid = () => {
       </div>
 
       {data?.total_results === 0 ? (
-        <span>Nenhum filme encontrado para os filtros escolhidos...</span>
+        <div className="flex h-150 w-full flex-col items-center justify-center gap-2 p-4 text-center leading-tight text-white md:gap-4">
+          <h3 className="text-xl font-bold md:text-2xl">
+            Nenhum filme encontrado
+          </h3>
+
+          <p>Não encontramos resultados para os filtros escolhidos.</p>
+        </div>
+      ) : error ? (
+        <div className="flex h-150 w-full flex-col items-center justify-center gap-2 p-4 text-center leading-tight text-white md:gap-4">
+          <h3 className="text-xl font-bold md:text-2xl">Ops...</h3>
+
+          <p>Ocorreu um erro ao buscar os filmes.</p>
+
+          <Button
+            onClick={() => refetch()}
+            variant="secondary"
+            className="h-12"
+          >
+            Tentar novamente
+          </Button>
+        </div>
       ) : (
         <MovieGrid
           movies={data?.results}
