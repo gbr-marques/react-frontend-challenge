@@ -15,8 +15,3 @@ async function fetchPopularMovies() {
   const data = await tmdbFetch<IMoviesResponse>("/movie/popular");
   return data.results;
 }
-
-// const fetchPopularMovies = async () => {
-//   const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
-//   return await response.json();
-// };
