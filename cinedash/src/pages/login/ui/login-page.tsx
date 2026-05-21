@@ -6,6 +6,9 @@ import { Eye, EyeOff } from "lucide-react";
 import logo from "@/shared/assets/cinedash_logo.png";
 import { Checkbox } from "../../../components/ui/checkbox";
 import { useNavigate } from "@tanstack/react-router";
+import { useForm } from "react-hook-form";
+import z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export function LoginPage() {
   const navigate = useNavigate();
@@ -15,6 +18,20 @@ export function LoginPage() {
   const authenticateUser = () => {
     navigate({ to: "/home" });
   };
+
+  const schema = z.object({
+    email: z.string().email(),
+    password: z.string().min(6),
+  });
+
+  const {
+    register: login,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(schema) });
+
+  const onFormSubmit = (data) => console.log(data);
 
   return (
     <section className="flex min-h-screen items-center justify-center p-4">
@@ -30,50 +47,56 @@ export function LoginPage() {
             tincidunt sem. Hendrerit consequat id diam quam dignissim
             pellentesque quam ultrices sed.
           </p>
-          <div className="flex flex-col gap-2 w-full">
-            <Label htmlFor="password-toggle">E-mail</Label>
-            <div className="relative">
-              <Input
-                className="bg-background h-12"
-                id="password-toggle"
-                placeholder="Digite seu e-mail"
-                type="text"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 w-full">
-            <Label htmlFor="password-toggle">Senha</Label>
-            <div className="relative">
-              <Input
-                className="bg-background h-12"
-                id="password-toggle"
-                placeholder="Digite sua senha"
-                type={showPassword ? "text" : "password"}
-              />
-              <Button
-                className="absolute top-0 right-0 h-full px-3 hover:bg-transparent"
-                onClick={() => setShowPassword(!showPassword)}
-                size="icon"
-                type="button"
-                variant="ghost"
-              >
-                {showPassword ? (
-                  <EyeOff className="h-4 w-4 text-muted-foreground" />
-                ) : (
-                  <Eye className="h-4 w-4 text-muted-foreground" />
-                )}
-              </Button>
-            </div>
-          </div>
-          <span className="w-full flex gap-2 text-sm items-center text-gray-400">
-            <Checkbox></Checkbox> Mantenha-me conectado{" "}
-          </span>
-          <Button
-            className="bg-[#F98635] w-full h-12"
-            onClick={authenticateUser}
+          <form
+            className="flex flex-col gap-2 w-full"
+            onSubmit={handleSubmit(onFormSubmit)}
           >
-            Entrar
-          </Button>
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="password-toggle">E-mail</Label>
+              <div className="relative">
+                <Input
+                  className="bg-background h-12"
+                  id="password-toggle"
+                  placeholder="Digite seu e-mail"
+                  type="text"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="password-toggle">Senha</Label>
+              <div className="relative">
+                <Input
+                  className="bg-background h-12"
+                  id="password-toggle"
+                  placeholder="Digite sua senha"
+                  type={showPassword ? "text" : "password"}
+                />
+                <Button
+                  className="absolute top-0 right-0 h-full px-3 hover:bg-transparent"
+                  onClick={() => setShowPassword(!showPassword)}
+                  size="icon"
+                  type="button"
+                  variant="ghost"
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-4 w-4 text-muted-foreground" />
+                  ) : (
+                    <Eye className="h-4 w-4 text-muted-foreground" />
+                  )}
+                </Button>
+              </div>
+            </div>
+
+            <span className="w-full flex gap-2 text-sm items-center text-gray-400">
+              <Checkbox></Checkbox> Mantenha-me conectado{" "}
+            </span>
+            <Button
+              className="bg-[#F98635] w-full h-12"
+              onClick={authenticateUser}
+            >
+              Entrar
+            </Button>
+          </form>
         </div>
       </div>
     </section>
