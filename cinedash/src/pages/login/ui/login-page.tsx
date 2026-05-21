@@ -20,8 +20,8 @@ export function LoginPage() {
   };
 
   const schema = z.object({
-    email: z.string().email(),
-    password: z.string().min(6),
+    email: z.string().email("O e-mail digitado deve ser um e-mail válido"),
+    password: z.string().min(6, "A senha deve conter, no mínimo, 6 caracteres"),
   });
 
   const {
@@ -53,23 +53,26 @@ export function LoginPage() {
           >
             <div className="flex flex-col gap-2">
               <Label htmlFor="password-toggle">E-mail</Label>
-              <div className="relative">
-                <Input
-                  className="bg-background h-12"
-                  id="password-toggle"
-                  placeholder="Digite seu e-mail"
-                  type="text"
-                />
-              </div>
+
+              <Input
+                className="bg-background h-12 text-gray-600"
+                id="password-toggle"
+                placeholder="Digite seu e-mail"
+                type="text"
+                {...login("email")}
+              />
+
+              <p className="text-red-500 text-sm text-start">{errors.email?.message}</p>
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="password-toggle">Senha</Label>
               <div className="relative">
                 <Input
-                  className="bg-background h-12"
+                  className="bg-background h-12 text-gray-600"
                   id="password-toggle"
                   placeholder="Digite sua senha"
                   type={showPassword ? "text" : "password"}
+                  {...login("password")}
                 />
                 <Button
                   className="absolute top-0 right-0 h-full px-3 hover:bg-transparent"
@@ -85,6 +88,7 @@ export function LoginPage() {
                   )}
                 </Button>
               </div>
+              <p className="text-red-500 text-sm text-start">{errors.password?.message}</p>
             </div>
 
             <span className="w-full flex gap-2 text-sm items-center text-gray-400">
@@ -92,7 +96,7 @@ export function LoginPage() {
             </span>
             <Button
               className="bg-[#F98635] w-full h-12"
-              onClick={authenticateUser}
+              type="submit"
             >
               Entrar
             </Button>
