@@ -20,14 +20,17 @@ const MoviedDiscoveryGrid = () => {
   const [year, setYear] = useState<string>();
   const [genre, setGenre] = useState<string>();
   const [rating, setRating] = useState<string>();
-  const [title, setTitle] = useState("");
 
-  const debouncedTitle = useDebounce(title, 500);
+  const [page, setPage] = useState<number>(1);
+  // const [title, setTitle] = useState("");
+
+  // const debouncedTitle = useDebounce(title, 500);
 
   const { data, isLoading, error } = useFilteredMovies({
     year,
     genre,
     rating,
+    page
   });
 
   return (
@@ -115,11 +118,19 @@ const MoviedDiscoveryGrid = () => {
 
       {/* PAGINAÇÃO */}
       <div className="flex items-center justify-between">
-        <Button className="bg-gray-400 h-12 uppercase font-extralight text-gray-800">
+        <Button
+          className="bg-gray-400 h-12 uppercase font-extralight text-gray-800"
+          onClick={() => setPage((currentPage) => (currentPage -= 1))}
+          disabled={page == 1}
+        >
           <ArrowLeftIcon /> Página anterior
         </Button>
-
-        <Button className="bg-gray-400 h-12 uppercase font-extralight text-gray-800">
+        {page}
+        <Button
+          className="bg-gray-400 h-12 uppercase font-extralight text-gray-800"
+          onClick={() => setPage((currentPage) => (currentPage += 1))}
+          disabled={page == data?.total_pages}
+        >
           Próxima página <ArrowRightIcon />
         </Button>
       </div>
