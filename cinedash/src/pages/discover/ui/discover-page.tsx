@@ -13,7 +13,7 @@ export function DiscoverPage() {
             para compor o catálogo ideal.
           </p>
         </div>
-        <MovieHorizontalList></MovieHorizontalList>
+        <MovieHorizontalList displayMode="popular" title="Destaques do momento" showHyperlink={false}></MovieHorizontalList>
         <Separator></Separator>
         <MoviedDiscoveryGrid></MoviedDiscoveryGrid>
       </section>
