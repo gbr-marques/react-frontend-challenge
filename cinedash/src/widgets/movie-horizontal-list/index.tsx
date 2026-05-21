@@ -7,7 +7,7 @@ type Props = {
   title: string;
   displayMode: "popular" | "watchlist";
   showHyperlink: boolean;
-  hyperlinkRoute: string;
+  hyperlinkRoute?: string;
 };
 
 const MovieHorizontalList = ({
