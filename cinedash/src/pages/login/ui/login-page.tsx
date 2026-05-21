@@ -2,13 +2,15 @@ import { useState } from "react";
 import { Label } from "../../../components/ui/label";
 import { Input } from "../../../components/ui/input";
 import { Button } from "../../../components/ui/button";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, LoaderCircleIcon, SplineIcon } from "lucide-react";
 import logo from "@/shared/assets/cinedash_logo.png";
 import { Checkbox } from "../../../components/ui/checkbox";
 import { useNavigate } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import type { ILogin } from "../../../features/auth/model/types";
+import { useAuthentication } from "../../../features/auth/api/use-login";
 
 export function LoginPage() {
   const navigate = useNavigate();
@@ -20,18 +22,28 @@ export function LoginPage() {
   };
 
   const schema = z.object({
-    email: z.string().min(1, 'O campo e-mail é obrigatório').email("O e-mail digitado deve ser um e-mail válido"),
-    password: z.string().min(1, 'O campo senha é obrigatório').min(6, "A senha deve conter, no mínimo, 6 caracteres"),
+    email: z
+      .string()
+      .min(1, "O campo e-mail é obrigatório")
+      .email("O e-mail digitado deve ser um e-mail válido"),
+    password: z
+      .string()
+      .min(1, "O campo senha é obrigatório")
+      .min(6, "A senha deve conter, no mínimo, 6 caracteres"),
   });
 
   const {
     register: login,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({ resolver: zodResolver(schema) });
 
-  const onFormSubmit = (data) => console.log(data);
+  const { mutate, isPending } = useAuthentication();
+
+  const onFormSubmit = (data: ILogin) => {
+    mutate(data);
+  };
 
   return (
     <section className="flex min-h-screen items-center justify-center p-4">
@@ -98,8 +110,18 @@ export function LoginPage() {
             <span className="w-full flex gap-2 text-sm items-center text-gray-400">
               <Checkbox></Checkbox> Mantenha-me conectado{" "}
             </span>
-            <Button className="bg-[#F98635] w-full h-12" type="submit">
-              Entrar
+            <Button
+              className="bg-[#F98635] w-full h-12"
+              type="submit"
+              disabled={isPending}
+            >
+              {isPending ? (
+                <span>
+                  <LoaderCircleIcon className="animate-spin"></LoaderCircleIcon>
+                </span>
+              ) : (
+                <span>Entrar</span>
+              )}
             </Button>
           </form>
         </div>
