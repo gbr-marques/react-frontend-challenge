@@ -1,4 +1,4 @@
-import logo from "@/shared/assets/cinedash_logo.png";
+import logo from "@/shared/assets/cinedash_logo.svg";
 import {
   Menubar,
   MenubarContent,

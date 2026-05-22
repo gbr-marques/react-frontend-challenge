@@ -1,4 +1,4 @@
-import logo from "@/shared/assets/cinedash_logo.png";
+import logo from "@/shared/assets/cinedash_logo.svg";
 import LoginForm from "../../../widgets/login-form";
 import loginBackdrop from "../../../shared/assets/images/login_backgrop.jpg";
 import loginBanner from "../../../shared/assets/images/login_banner.jpg";
@@ -22,7 +22,7 @@ export function LoginPage() {
           }}
         ></div>
         <div className="h-fit flex flex-col items-center justify-center text-center gap-4 p-2 md:p-6 text-white leading-tight md:w-1/2">
-          <img src={logo} alt="Logo do CineDash" className="w-[60%] max-w-64" />
+          <img src={logo} alt="Logo do CineDash" className="w-[60%] max-w-48" />
           <h1 className="text-2xl font-bold georgia">
             A sua plataforma de curadoria e descoberta de filmes
           </h1>
