@@ -22,8 +22,21 @@ describe("watchlist store", () => {
       vote_average: 8.504,
       vote_count: 1008,
       tagline: "Exemplo de tagline",
-    
-    }
+      genres: [
+        {
+          id: 28,
+          name: "Ação",
+        },
+        {
+          id: 18,
+          name: "Drama",
+        },
+        {
+          id: 80,
+          name: "Crime",
+        },
+      ],
+    };
 
     useWatchlistStore.getState().addMovie(movie);
 
