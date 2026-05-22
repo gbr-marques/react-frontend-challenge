@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { useWatchlistStore } from "../../stores/watchlist/use-watchlist-store";
 import { DetailsPage } from "../../pages/details";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const movieMock = {
   adult: false,
@@ -57,7 +58,13 @@ describe("MovieDetailsPage", () => {
   it("should add movie to watchlist", async () => {
     const user = userEvent.setup();
 
-    render(<DetailsPage></DetailsPage>);
+    const queryClient = new QueryClient();
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <DetailsPage />
+      </QueryClientProvider>,
+    );
 
     const button = screen.getByRole("button", {
       name: /adicionar aos favoritos/i,
