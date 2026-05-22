@@ -16,11 +16,11 @@ import LoginForm from "../../../widgets/login-form";
 export function RedirectPage() {
   return (
     <section className="flex min-h-screen items-center justify-center p-4">
-      <div className="bg-[#1D242A] w-full max-w-[1000px] flex rounded-md shadow-lg overflow-hidden">
-        <div className="h-fit flex flex-col items-center justify-center text-center gap-4 p-2 md:p-4 text-white leading-tight md:w-1/2">
+      <div className="bg-[#1D242A] flex rounded-md shadow-lg overflow-hidden max-w-100">
+        <div className="h-fit flex flex-col items-center justify-center text-center gap-4 p-2 md:p-4 text-white leading-tight ">
           <img src={logo} alt="Logo do CineDash" className="w-[60%] max-w-64" />
           <h1 className="text-2xl font-bold georgia">
-            Você precisa estar logado para acessar esta área
+            Você precisa estar logado para acessar o CineDash
           </h1>
           <p>Faça login para continuar explorando seus filmes e listas</p>
           <LoginForm></LoginForm>
