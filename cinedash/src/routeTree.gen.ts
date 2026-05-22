@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WatchlistRouteImport } from './routes/watchlist'
+import { Route as RedirectRouteImport } from './routes/redirect'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as DiscoverRouteImport } from './routes/discover'
 import { Route as IndexRouteImport } from './routes/index'
@@ -18,6 +19,11 @@ import { Route as DetailsIdRouteImport } from './routes/details/$id'
 const WatchlistRoute = WatchlistRouteImport.update({
   id: '/watchlist',
   path: '/watchlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RedirectRoute = RedirectRouteImport.update({
+  id: '/redirect',
+  path: '/redirect',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomeRoute = HomeRouteImport.update({
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/discover': typeof DiscoverRoute
   '/home': typeof HomeRoute
+  '/redirect': typeof RedirectRoute
   '/watchlist': typeof WatchlistRoute
   '/details/$id': typeof DetailsIdRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/discover': typeof DiscoverRoute
   '/home': typeof HomeRoute
+  '/redirect': typeof RedirectRoute
   '/watchlist': typeof WatchlistRoute
   '/details/$id': typeof DetailsIdRoute
 }
@@ -60,21 +68,36 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/discover': typeof DiscoverRoute
   '/home': typeof HomeRoute
+  '/redirect': typeof RedirectRoute
   '/watchlist': typeof WatchlistRoute
   '/details/$id': typeof DetailsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/discover' | '/home' | '/watchlist' | '/details/$id'
+  fullPaths:
+    | '/'
+    | '/discover'
+    | '/home'
+    | '/redirect'
+    | '/watchlist'
+    | '/details/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/discover' | '/home' | '/watchlist' | '/details/$id'
-  id: '__root__' | '/' | '/discover' | '/home' | '/watchlist' | '/details/$id'
+  to: '/' | '/discover' | '/home' | '/redirect' | '/watchlist' | '/details/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/discover'
+    | '/home'
+    | '/redirect'
+    | '/watchlist'
+    | '/details/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DiscoverRoute: typeof DiscoverRoute
   HomeRoute: typeof HomeRoute
+  RedirectRoute: typeof RedirectRoute
   WatchlistRoute: typeof WatchlistRoute
   DetailsIdRoute: typeof DetailsIdRoute
 }
@@ -86,6 +109,13 @@ declare module '@tanstack/react-router' {
       path: '/watchlist'
       fullPath: '/watchlist'
       preLoaderRoute: typeof WatchlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/redirect': {
+      id: '/redirect'
+      path: '/redirect'
+      fullPath: '/redirect'
+      preLoaderRoute: typeof RedirectRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/home': {
@@ -123,6 +153,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DiscoverRoute: DiscoverRoute,
   HomeRoute: HomeRoute,
+  RedirectRoute: RedirectRoute,
   WatchlistRoute: WatchlistRoute,
   DetailsIdRoute: DetailsIdRoute,
 }
