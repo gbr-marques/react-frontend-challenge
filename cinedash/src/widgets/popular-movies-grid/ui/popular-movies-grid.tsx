@@ -1,10 +1,6 @@
-import { ArrowLeftIcon, ArrowRightIcon, LoaderCircleIcon } from "lucide-react";
 import { Button } from "../../../components/ui/button";
 import { usePopularMovies } from "../../../entities/movie/api/use-popular-movies";
-import type { IMovie } from "../../../entities/movie/model/types";
-import MovieCard from "../../../shared/ui/movie-card";
 import { useState } from "react";
-import MovieCardSkeleton from "../../../shared/ui/movie-card/skeleton";
 import { MovieGrid } from "../../movie-grid";
 
 export function PopularMoviesGrid() {

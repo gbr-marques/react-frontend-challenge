@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { tmdbFetch } from "../../../shared/api/tmdb";
-import type { IMovie } from "../model/types";
+import type { IPopularMoviesResponse } from "../model/types";
 
 type IParams = {
   query: string;
@@ -21,7 +21,9 @@ async function fetchSearchedMovies(searchParams: IParams) {
   if (searchParams.query) params.append("query", searchParams.query);
   params.append("page", searchParams.page.toString());
 
-  return tmdbFetch<{ results: IMovie[] }>(
+  const data = await tmdbFetch<IPopularMoviesResponse>(
     `/search/moie?${params.toString()}&language=pt-BR`,
   );
+
+  return data;
 }

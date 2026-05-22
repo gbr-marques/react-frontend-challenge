@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { tmdbFetch } from "../../../shared/api/tmdb";
-import type { IMoviesResponse } from "../model/types";
-import { boolean } from "zod";
+import type { IPopularMoviesResponse } from "../model/types";
 
 export function usePopularMovies(shouldFetch: boolean, page: number = 1) {
   return useQuery({
@@ -16,7 +15,7 @@ async function fetchPopularMovies(page: number) {
 
   params.append("page", page.toString());
 
-  const data = await tmdbFetch<IMoviesResponse>(
+  const data = await tmdbFetch<IPopularMoviesResponse>(
     `/movie/popular?${params.toString()}`,
   );
   return data;
