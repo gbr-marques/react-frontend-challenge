@@ -27,7 +27,7 @@ export function RedirectPage() {
       }}
     >
       <div className="bg-[#36434e] flex rounded-md shadow-lg overflow-hidden max-w-100">
-        <div className="h-fit flex flex-col items-center justify-center text-center gap-4 p-2 md:p-4 text-white leading-tight ">
+        <div className="h-fit flex flex-col items-center justify-center text-center gap-4 p-6 md:p-4 text-white leading-tight ">
           <img src={logo} alt="Logo do CineDash" className="w-[60%] max-w-64" />
           <h1 className="text-2xl font-bold georgia">
             Você precisa estar logado para acessar o CineDash
