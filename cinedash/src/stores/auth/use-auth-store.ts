@@ -9,3 +9,36 @@ type AuthState = {
   login: () => void;
   logout: () => void;
 };
+
+export const useAuthStore = create<AuthState>()(
+  persist(
+    (set) => ({
+      token: null,
+      user: null,
+      isAuthenticated: false,
+
+      login: () => {
+        console.log("Usuário logado");
+
+        const newToken = crypto.randomUUID();
+
+        set({
+          token: newToken,
+          isAuthenticated: true,
+        });
+      },
+
+      logout: () => {
+        console.log("Usuário deslogado");
+        set({
+          token: null,
+          user: null,
+          isAuthenticated: false,
+        });
+      },
+    }),
+    {
+      name: "auth-storage",
+    },
+  ),
+);
