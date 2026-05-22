@@ -4,7 +4,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "../../../components/ui/tabs";
-import MoviedDiscoveryGrid from "../../../widgets/movie-discovery-grid";
+import FilteredMovieGrid from "../../../widgets/filtered-movie-grid";
 import MovieSearchGrid from "../../../widgets/movie-search-grid";
 import { PopularMoviesGrid } from "../../../widgets/popular-movies-grid/ui/popular-movies-grid";
 
@@ -35,7 +35,7 @@ export function DiscoverPage() {
               <MovieSearchGrid></MovieSearchGrid>
             </TabsContent>
             <TabsContent className="w-full" value="filters">
-              <MoviedDiscoveryGrid></MoviedDiscoveryGrid>
+              <FilteredMovieGrid></FilteredMovieGrid>
             </TabsContent>
           </Tabs>
         </div>

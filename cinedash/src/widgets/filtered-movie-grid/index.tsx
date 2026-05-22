@@ -13,7 +13,7 @@ import { StarIcon } from "lucide-react";
 import { MovieGrid } from "../movie-grid";
 import { Button } from "../../components/ui/button";
 
-const MoviedDiscoveryGrid = () => {
+const FilteredMovieGrid = () => {
   const [year, setYear] = useState<string>();
   const [genre, setGenre] = useState<string>();
   const [rating, setRating] = useState<string>();
@@ -129,4 +129,4 @@ const MoviedDiscoveryGrid = () => {
   );
 };
 
-export default MoviedDiscoveryGrid;
+export default FilteredMovieGrid;
