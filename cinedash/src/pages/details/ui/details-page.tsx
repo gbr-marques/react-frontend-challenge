@@ -1,8 +1,6 @@
 import {
   BookmarkIcon,
   Star,
-  StarIcon,
-  StarsIcon,
   VideoIcon,
 } from "lucide-react";
 import { Badge } from "../../../components/ui/badge";
@@ -16,9 +14,6 @@ import { useWatchlistStore } from "../../../stores/watchlist/use-watchlist-store
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "../../../components/ui/dialog";
 import { TrailerViewer } from "../../../widgets/trailer-viewer";
@@ -68,8 +63,8 @@ export function DetailsPage() {
                   <span className="flex">
                     {Array.from({
                       length: Math.round(Number(movie?.vote_average)),
-                    }).map(() => (
-                      <Star className="text-yellow-300 fill-yellow-300 h-5"></Star>
+                    }).map((_, i) => (
+                      <Star key={i} className="text-yellow-300 fill-yellow-300 h-5"></Star>
                     ))}
                   </span>
                   <span className="text-sm text-gray-400 leading-tight">
@@ -80,8 +75,8 @@ export function DetailsPage() {
                   {movie?.tagline}
                 </span>
                 <span className="text-xs font-extralight text-gray-400 flex gap-1">
-                  {movie?.genres.map((genre) => (
-                    <Badge className="bg-[#485568] rounded-xs font-extralight">
+                  {movie?.genres.map((genre, index) => (
+                    <Badge key={index} className="bg-[#485568] rounded-xs font-extralight">
                       {genre.name}
                     </Badge>
                   ))}

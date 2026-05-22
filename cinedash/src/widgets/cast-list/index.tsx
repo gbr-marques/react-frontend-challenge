@@ -12,8 +12,13 @@ export function CastList({ movieID }: Props) {
   return (
     <>
       <div className="flex flex-wrap gap-1">
-        {data?.cast.slice(0, 20).map((actor: ICreditedPerson) => (
-          <Badge className="bg-[#485568] rounded-xs font-extralight">{actor.name}</Badge>
+        {data?.cast.slice(0, 20).map((actor: ICreditedPerson, index) => (
+          <Badge
+            key={index}
+            className="bg-[#485568] rounded-xs font-extralight"
+          >
+            {actor.name}
+          </Badge>
         ))}
       </div>
     </>

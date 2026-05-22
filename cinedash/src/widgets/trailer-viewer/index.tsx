@@ -1,5 +1,4 @@
-import { Dialog } from "radix-ui";
-import { DialogClose, DialogContent } from "../../components/ui/dialog";
+import { DialogClose } from "../../components/ui/dialog";
 import { useMovieTrailers } from "../../entities/movie/api/use-movie-trailers";
 import { Button } from "../../components/ui/button";
 import { Skeleton } from "../../components/ui/skeleton";

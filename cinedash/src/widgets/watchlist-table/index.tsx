@@ -1,7 +1,6 @@
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
-  ArrowUpRightIcon,
   FilmIcon,
   SquareArrowOutUpRight,
   StarIcon,
@@ -33,7 +32,6 @@ import {
 import {
   Empty,
   EmptyContent,
-  EmptyDescription,
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
