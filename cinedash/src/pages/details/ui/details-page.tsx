@@ -119,10 +119,11 @@ export function DetailsPage() {
                           <VideoIcon></VideoIcon> Assistir trailer
                         </Button>
                       </DialogTrigger>
-                      <DialogContent>
-                        <DialogHeader>
-                          <TrailerViewer></TrailerViewer>
-                        </DialogHeader>
+                      <DialogContent
+                        showCloseButton={false}
+                        className="bg-[#14181c] w-6xl!"
+                      >
+                        <TrailerViewer movieID={movie?.id}></TrailerViewer>
                       </DialogContent>
                     </Dialog>
                   </div>

@@ -37,3 +37,26 @@ export type IFilters = {
   rating?: string;
   title?: string;
 };
+
+export interface IMovieVideosResponse {
+  id: number;
+  results: IMovieVideo[];
+}
+
+export interface IMovieVideo {
+  iso_639_1: string;
+  iso_3166_1: string;
+
+  name: string;
+  key: string;
+  site: string;
+  type: string;
+
+  size: number;
+
+  official: boolean;
+
+  published_at: string;
+
+  id: string;
+}
