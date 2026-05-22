@@ -3,7 +3,7 @@ import { Label } from "../../../components/ui/label";
 import { Input } from "../../../components/ui/input";
 import { Button } from "../../../components/ui/button";
 import { Eye, EyeOff, LoaderCircleIcon, SplineIcon } from "lucide-react";
-import logo from "@/shared/assets/cinedash_logo.png";
+import logo from "@/shared/assets/cinedash_logo.svg";
 import { Checkbox } from "../../../components/ui/checkbox";
 import { useNavigate } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
