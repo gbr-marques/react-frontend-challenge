@@ -13,6 +13,15 @@ import moment from "moment";
 import { CastList } from "../../../widgets/cast-list";
 import { DetailsSkeleton } from "./details-skeleton";
 import { useWatchlistStore } from "../../../stores/watchlist/use-watchlist-store";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../../../components/ui/dialog";
+import { TrailerViewer } from "../../../widgets/trailer-viewer";
 
 export function DetailsPage() {
   const { id } = Route.useParams();
@@ -104,9 +113,18 @@ export function DetailsPage() {
                         ? "Adicionar aos favoritos"
                         : "Remover dos favoritos"}
                     </Button>
-                    <Button className="h-12 uppercase font-extralight bg-gray-400 text-gray-800">
-                      <VideoIcon></VideoIcon> Assistir trailer
-                    </Button>
+                    <Dialog>
+                      <DialogTrigger>
+                        <Button className="h-12 uppercase font-extralight bg-gray-400 text-gray-800">
+                          <VideoIcon></VideoIcon> Assistir trailer
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <TrailerViewer></TrailerViewer>
+                        </DialogHeader>
+                      </DialogContent>
+                    </Dialog>
                   </div>
                 </div>
               </div>
