@@ -51,7 +51,7 @@ Acesse a pasta do projeto:
 
 ## Configuração do ambiente
 
-Crie um arquivo ``.env`` na raiz do projeto contendo sua chave da API do TMDB:
+Crie um arquivo ``.env`` na raiz do projeto contendo seu Token de leitura da API do TMDB:
 
 VITE_TMDB_TOKEN=<sua_chave_tmdb>
 
