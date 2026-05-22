@@ -12,7 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { ILogin } from "../../../features/auth/model/types";
 import { useAuthentication } from "../../../features/auth/api/use-login";
 import LoginForm from "../../../widgets/login-form";
-import backdrop from "../../../shared/assets/images/login_backgrop.jpg";
+import loginBackdrop from "../../../shared/assets/images/login_backgrop.jpg";
 
 export function LoginPage() {
   return (
@@ -21,7 +21,7 @@ export function LoginPage() {
       style={{
         backgroundImage: `
           linear-gradient(rgba(15, 25, 31, 0.6), rgba(12, 25, 31, 8)),
-          url(${backdrop})
+          url(${loginBackdrop})
         `,
       }}
     >
