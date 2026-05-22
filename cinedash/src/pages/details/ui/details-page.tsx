@@ -5,7 +5,6 @@ import {
 } from "lucide-react";
 import { Badge } from "../../../components/ui/badge";
 import { Button } from "../../../components/ui/button";
-import { Route } from "../../../routes/details/$id";
 import { useMovieDetails } from "../../../entities/movie/api/use-movie-details";
 import moment from "moment";
 import { CastList } from "../../../widgets/cast-list";
@@ -17,9 +16,10 @@ import {
   DialogTrigger,
 } from "../../../components/ui/dialog";
 import { TrailerViewer } from "../../../widgets/trailer-viewer";
+import { useParams } from "@tanstack/react-router";
 
 export function DetailsPage() {
-  const { id } = Route.useParams();
+  const { id } = useParams({ from: "/details/$id" });
 
   const { data: movie, isLoading, error, refetch } = useMovieDetails(id);
 
