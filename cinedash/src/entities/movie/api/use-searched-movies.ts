@@ -22,6 +22,6 @@ async function fetchSearchedMovies(searchParams: IParams) {
   params.append("page", searchParams.page.toString());
 
   return tmdbFetch<{ results: IMovie[] }>(
-    `/search/movie?${params.toString()}&language=pt-BR`,
+    `/search/moie?${params.toString()}&language=pt-BR`,
   );
 }

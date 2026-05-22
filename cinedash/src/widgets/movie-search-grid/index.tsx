@@ -1,12 +1,11 @@
-import {
-  SearchIcon,
-} from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import { useState } from "react";
 import { Input } from "../../components/ui/input";
 import { useDebounce } from "../../shared/lib/use-debounce";
 import { useSearchedMovies } from "../../entities/movie/api/use-searched-movies";
 import type { IMovie } from "../../entities/movie/model/types";
 import { MovieGrid } from "../movie-grid";
+import { Button } from "../../components/ui/button";
 
 const MovieSearchGrid = () => {
   const [page, setPage] = useState<number>(1);
@@ -14,7 +13,7 @@ const MovieSearchGrid = () => {
 
   const debouncedTitle = useDebounce(title, 1000);
 
-  const { data, isLoading, error } = useSearchedMovies(
+  const { data, isLoading, error, refetch } = useSearchedMovies(
     {
       query: debouncedTitle,
       page,
@@ -43,12 +42,19 @@ const MovieSearchGrid = () => {
               <SearchIcon size={48} className="stroke-3"></SearchIcon>
             </span>{" "}
           </div>
-        ) : data?.total_results === 0 ? (
-          <div className="h-75 flex items-center justify-center text-xl leading-tight text-center text-white font-bold">
-            <span className="w-fit! text-center flex gap-4 items-center justify-center">
-              "Nenhum resultado encontrado para o título pesquisado..."
-              <SearchIcon size={48} className="stroke-3"></SearchIcon>
-            </span>
+        ) : error ? (
+          <div className="flex h-150 w-full flex-col items-center justify-center gap-2 p-4 text-center leading-tight text-white md:gap-4">
+            <h3 className="text-xl font-bold md:text-2xl">Ops...</h3>
+
+            <p>Ocorreu um erro ao buscar os filmes.</p>
+
+            <Button
+              onClick={() => refetch()}
+              variant="secondary"
+              className="h-12"
+            >
+              Tentar novamente
+            </Button>
           </div>
         ) : (
           <MovieGrid
