@@ -129,12 +129,36 @@ Analisando o que estava sendo pedido, apurei que o layout da página deveria ofe
     - Pesquisa de filmes por título;
     - Pesquisa de filmes por filtros avançados;
 
-Porém, após estudar, com calma, os endpoints disponíveis na TMDB API, pude perceber que, até o momento, não existe um endpoint que atenda todos os três critérios. Diante desse cenário, decidi criar três widgets específicos, cada um oferecendo o seu próprio modo de busca:
+Porém, após estudar, com calma, os endpoints disponíveis na TMDB API, pude perceber que, até o momento, não existe um endpoint que atenda todos os três critérios. Diante desse cenário, decidi criar três widgets específicos, cada um contendo o seu próprio endpoint e modo de busca:
 
-    - <PopularMoviesGrid></PopularMoviesGrid> : responsável por listar os filmes populares no momento.
-    - <MovieSearchGrid></MovieSearchGrid> : responsável por exibir os filmes pesquisados por título
-    - <FilteredMovieGrid></FilteredMovieGrid> : responsável por exibir os filmes filtrados usando os filtros avançados (gênero, ano de lançamento e avaliações)
+    - <PopularMoviesGrid></PopularMoviesGrid>: responsável por listar os filmes populares no momento.
+    - <MovieSearchGrid></MovieSearchGrid>: responsável por exibir os filmes pesquisados por título
+    - <FilteredMovieGrid></FilteredMovieGrid>: responsável por exibir os filmes filtrados usando os filtros avançados (gênero, ano de lançamento e avaliações)
 
-Esses widgets foram estruturados através de um sistema de tabs, de form que o usuário pode alternar entre eles e escolher a melhor forma de buscar novos títulos.
+Esses widgets foram estruturados através de um sistema de tabs, de forma que o usuário pode alternar entre eles e escolher a melhor forma de buscar novos títulos de forma fluida e intuitiva.
 
 ## Listagem de favoritos 
+
+Ao listar os favoritos na tabela, me deparei com alguns empecilhos relacionados ao layout. Os recursos de ordenação da TanStack Table eram muito eficientes, porém, sempre existem dificuldades ao tentar adaptar tabelas extensas para dispositivos menores, e nesse caso não foi diferente.
+
+Após explorar algumas alternativas, decidi por sacrificar os recursos de ordenação da TanStack Table, e migrar a responsabilidade e função de ordenação para uma lista suspensa (``<Select>``) independente do componente da tabela. Isso permitiu com que eu pudesse abandonar a estrutura de colunas tradicional e cnverter o layout de linhas para <strong>cards</strong>. Dessa forma, pude adaptar o layout dos filmes listados para telas menores de forma muito eficiente.
+
+# O QUE NÃO PUDE ENTREGAR
+
+## Alternância entre modo claro e modo escuro
+
+Ao longo do planejamento do desenvolvimento do projeto, não pude desenvolver o recurso onde o usuário pudesse alternar entre o modo claro e o modo escuro da aplicação de maneira satisfatória. Diante disso, optei por omitir essa feature do projeto, focando na qualidade das regras de negócio principais.
+
+## Versionamento e gitflow
+
+Durante o desenvolvimento, optei por concentrar o trabalho em uma única branch para priorizar a implementação das funcionalidades dentro do tempo disponível para o desafio. Em um contexto de desenvolvimento colaborativo, o ideal seria utilizar uma estratégia de versionamento baseada em branches por funcionalidade, permitindo maior rastreabilidade das alterações, revisões mais organizadas e um fluxo de integração mais estruturado. Apesar de não ter seguido essa abordagem neste projeto, procurei manter commits frequentes e com escopo bem definido para preservar a clareza do histórico de desenvolvimento.
+
+# CONSIDERAÇÕES FINAIS
+
+O desenvolvimento do CineDash foi uma ótima oportunidade de aplicar conceitos de arquitetura frontend moderna, consumo de APIs, gerenciamento de estado e testes automatizados em um contexto próximo ao encontrado em aplicações reais.
+
+Além da implementação das funcionalidades propostas, o projeto também serviu como oportunidade para aprofundar conhecimentos em ferramentas com as quais eu possuía menor experiência prévia, como TanStack Query e Zustand, ampliando meu repertório técnico e compreensão de diferentes abordagens para gerenciamento de dados e estado.
+
+Embora a versão atual atenda aos requisitos principais do desafio, a arquitetura adotada permite a evolução contínua da aplicação, seja por meio da implementação de novas funcionalidades, ampliação da cobertura de testes ou refinamentos na experiência do usuário.
+
+No geral, considero o projeto uma experiência muito positiva, tanto pelos desafios técnicos envolvidos quanto pelo aprendizado adquirido ao longo do processo de desenvolvimento.
