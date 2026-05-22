@@ -20,7 +20,7 @@ import {
 import type { IGenre, IMovie } from "../../entities/movie/model/types";
 import moment from "moment";
 import { useNavigate } from "@tanstack/react-router";
-import { useWatchlistStore } from "../../features/watchlist/use-watchlist-store";
+import { useWatchlistStore } from "../../stores/watchlist/use-watchlist-store";
 import { Badge } from "../../components/ui/badge";
 import { useState } from "react";
 import {

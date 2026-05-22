@@ -12,7 +12,7 @@ import { useMovieDetails } from "../../../entities/movie/api/use-movie-details";
 import moment from "moment";
 import { CastList } from "../../../widgets/cast-list";
 import { DetailsSkeleton } from "./details-skeleton";
-import { useWatchlistStore } from "../../../features/watchlist/use-watchlist-store";
+import { useWatchlistStore } from "../../../stores/watchlist/use-watchlist-store";
 
 export function DetailsPage() {
   const { id } = Route.useParams();

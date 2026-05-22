@@ -21,7 +21,7 @@ import {
   XIcon,
 } from "lucide-react";
 import { Button } from "../../../components/ui/button";
-import { useWatchlistStore } from "../../../features/watchlist/use-watchlist-store";
+import { useWatchlistStore } from "../../../stores/watchlist/use-watchlist-store";
 import type { IGenre, IMovie } from "../../../entities/movie/model/types";
 import { useNavigate } from "@tanstack/react-router";
 import moment from "moment";

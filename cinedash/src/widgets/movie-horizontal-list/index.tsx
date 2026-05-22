@@ -4,7 +4,7 @@ import type { IMovie } from "../../entities/movie/model/types";
 import { Link, useNavigate } from "@tanstack/react-router";
 import MovieCardSkeleton from "../../shared/ui/movie-card/skeleton";
 import { useState } from "react";
-import { useWatchlistStore } from "../../features/watchlist/use-watchlist-store";
+import { useWatchlistStore } from "../../stores/watchlist/use-watchlist-store";
 import { SearchIcon, StarsIcon } from "lucide-react";
 import { Button } from "../../components/ui/button";
 

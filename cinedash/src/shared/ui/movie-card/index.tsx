@@ -9,7 +9,7 @@ import { Toggle } from "../../../components/ui/toggle";
 import { Button } from "../../../components/ui/button";
 import { useNavigate } from "@tanstack/react-router";
 import type { IMovie } from "../../../entities/movie/model/types";
-import { useWatchlistStore } from "../../../features/watchlist/use-watchlist-store";
+import { useWatchlistStore } from "../../../stores/watchlist/use-watchlist-store";
 
 type Props = {
   movie: IMovie;
