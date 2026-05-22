@@ -21,8 +21,6 @@ function RootComponent() {
 
   const isPublicRoute = ["/", "/redirect"].includes(pathname);
 
-  console.log(isPublicRoute);
-
   return (
     <React.Fragment>
       {isAuthenticated && !isPublicRoute && <Header />}

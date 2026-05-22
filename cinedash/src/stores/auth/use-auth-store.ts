@@ -18,8 +18,6 @@ export const useAuthStore = create<AuthState>()(
       isAuthenticated: false,
 
       login: () => {
-        console.log("Usuário logado");
-
         const newToken = crypto.randomUUID();
 
         set({
@@ -29,7 +27,6 @@ export const useAuthStore = create<AuthState>()(
       },
 
       logout: () => {
-        console.log("Usuário deslogado");
         set({
           token: null,
           user: null,
