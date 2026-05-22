@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import { useWatchlistStore } from "./use-watchlist-store";
-import { genres } from "../../shared/model/genres";
 
 describe("watchlist store", () => {
   it("should add a movie to watchlist", () => {

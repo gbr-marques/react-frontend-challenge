@@ -3,9 +3,8 @@ import MovieCard from "../../shared/ui/movie-card";
 import type { IMovie } from "../../entities/movie/model/types";
 import { Link, useNavigate } from "@tanstack/react-router";
 import MovieCardSkeleton from "../../shared/ui/movie-card/skeleton";
-import { useState } from "react";
 import { useWatchlistStore } from "../../stores/watchlist/use-watchlist-store";
-import { SearchIcon, StarsIcon } from "lucide-react";
+import { StarsIcon } from "lucide-react";
 import { Button } from "../../components/ui/button";
 
 type Props = {
@@ -54,7 +53,7 @@ const MovieHorizontalList = ({
             </Link>
           )}
         </div>
-        <div className="flex gap-2 md:gap-4 overflow-x-auto pb-4 h-60 md:h-80 w-full [mask-image:linear-gradient(to_right,black_90%,transparent)]">
+        <div className="flex gap-2 md:gap-4 overflow-x-auto pb-4 h-60 md:h-80 w-full mask-[linear-gradient(to_right,black_90%,transparent)]">
           {isWatchlistEmpty && (
             <div className="flex w-full flex-col items-center justify-center gap-2 p-4 text-center leading-tight md:gap-4">
               <h3 className="text-xl font-bold md:text-2xl">

@@ -26,7 +26,7 @@ const Header = () => {
   return (
     <>
       <header className="w-full bg-[#2C3440] h-[10dvh] min-h-fit p-2 md:p-4 flex justify-center items-center">
-        <div className="flex justify-between items-center w-full max-w-[1350px]">
+        <div className="flex justify-between items-center w-full max-w-337.5">
           <div className="flex gap-12 items-center">
             <img src={logo}></img>
             <ul className="gap-12 hidden md:flex font-black uppercase text-lg">

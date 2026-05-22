@@ -4,7 +4,7 @@ export function DetailsSkeleton() {
   return (
       <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center justify-center w-full">
         {/* POSTER */}
-        <Skeleton className="w-40 md:w-[350px] h-full aspect-[65/98]! rounded-sm bg-[#2b363f]" />
+        <Skeleton className="w-40 md:w-87.5 h-full aspect-65/98! rounded-sm bg-[#2b363f]" />
 
         {/* INFO */}
         <div className="flex flex-col gap-4 w-full max-w-150">

@@ -4,7 +4,7 @@ export function HomePage() {
   return (
     <>
       <section className="min-h-[75dvh] bg-[#1D242A] p-4 py-8 flex flex-col items-center gap-8">
-        <div className="w-full max-w-[1350px] flex flex-col gap-8">
+        <div className="w-full max-w-337.5 flex flex-col gap-8">
           <div className="text-white text-center leading-tight flex flex-col items-center gap-4 ">
             <h1 className="text-2xl md:text-4xl font-bold georgia">
               Bem-vindo, curador! Pronto para descobrir novos filmes?
