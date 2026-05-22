@@ -12,12 +12,20 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { ILogin } from "../../../features/auth/model/types";
 import { useAuthentication } from "../../../features/auth/api/use-login";
 import LoginForm from "../../../widgets/login-form";
+import backdrop from "../../../shared/assets/images/login_backgrop.jpg";
 
 export function LoginPage() {
- 
   return (
-    <section className="flex min-h-screen items-center justify-center p-4">
-      <div className="bg-[#1D242A] w-full max-w-[1000px] flex rounded-md shadow-lg overflow-hidden">
+    <section
+      className="flex min-h-screen items-center justify-center p-4 bg bg-cover bg-center "
+      style={{
+        backgroundImage: `
+          linear-gradient(rgba(15, 25, 31, 0.6), rgba(12, 25, 31, 8)),
+          url(${backdrop})
+        `,
+      }}
+    >
+      <div className="bg-[#36434e] w-full max-w-[1000px] flex rounded-md shadow-lg overflow-hidden">
         <div className="w-1/2 bg-red-400 hidden md:block"></div>
         <div className="h-fit flex flex-col items-center justify-center text-center gap-4 p-2 md:p-4 text-white leading-tight md:w-1/2">
           <img src={logo} alt="Logo do CineDash" className="w-[60%] max-w-64" />
