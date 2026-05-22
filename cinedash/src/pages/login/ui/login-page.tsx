@@ -27,9 +27,9 @@ export function LoginPage() {
             A sua plataforma de curadoria e descoberta de filmes
           </h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur. Egestas sit felis aenean
-            tincidunt sem. Hendrerit consequat id diam quam dignissim
-            pellentesque quam ultrices sed.
+            Explore os lançamentos mais populares, descubra novos títulos,
+            consulte informações detalhadas e monte sua própria lista de
+            favoritos para acompanhar tudo o que deseja assistir.
           </p>
           <LoginForm></LoginForm>
         </div>
