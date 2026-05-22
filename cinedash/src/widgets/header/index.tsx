@@ -11,13 +11,16 @@ import {
 import { LogOutIcon, Menu } from "lucide-react";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { Button } from "../../components/ui/button";
+import { useAuthStore } from "../../stores/auth/use-auth-store";
 
 const Header = () => {
   const navigate = useNavigate();
 
-  const logout = () => {
+  const { logout } = useAuthStore()
+
+  const logoutUser = () => {
     navigate({ to: "/" });
-    localStorage.clear()
+    logout()
   };
 
   return (
@@ -47,7 +50,7 @@ const Header = () => {
           <Button
             aria-label="Logout"
             variant={"destructive"}
-            onClick={() => logout()}
+            onClick={() => logoutUser()}
             className="text-white bg-[#FE4444] hidden md:flex"
           >
             Sair<LogOutIcon></LogOutIcon>
@@ -88,12 +91,12 @@ const Header = () => {
                 <MenubarSeparator />
                 <MenubarGroup>
                   <MenubarItem>
-                    <Link
-                      onClick={() => logout()}
+                    <Button variant={"link"}
+                      onClick={() => logoutUser()}
                       className="flex gap-2 items-center p-2"
                     >
                       Logout <LogOutIcon></LogOutIcon>
-                    </Link>
+                    </Button>
                   </MenubarItem>
                 </MenubarGroup>
               </MenubarContent>
