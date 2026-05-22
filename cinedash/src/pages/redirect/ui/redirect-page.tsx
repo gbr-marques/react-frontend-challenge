@@ -1,16 +1,4 @@
-import { useState } from "react";
-import { Label } from "../../../components/ui/label";
-import { Input } from "../../../components/ui/input";
-import { Button } from "../../../components/ui/button";
-import { Eye, EyeOff, LoaderCircleIcon, SplineIcon } from "lucide-react";
 import logo from "@/shared/assets/cinedash_logo.svg";
-import { Checkbox } from "../../../components/ui/checkbox";
-import { useNavigate } from "@tanstack/react-router";
-import { useForm } from "react-hook-form";
-import z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import type { ILogin } from "../../../features/auth/model/types";
-import { useAuthentication } from "../../../features/auth/api/use-login";
 import LoginForm from "../../../widgets/login-form";
 import redirectBackdrop from "../../../shared/assets/images/redirect_backdrop.jpg";
 
