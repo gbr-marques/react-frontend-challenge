@@ -13,8 +13,12 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { Button } from "../../components/ui/button";
 
 const Header = () => {
+  const navigate = useNavigate();
 
-const navigate = useNavigate()
+  const logout = () => {
+    navigate({ to: "/" });
+    localStorage.clear()
+  };
 
   return (
     <>
@@ -43,7 +47,7 @@ const navigate = useNavigate()
           <Button
             aria-label="Logout"
             variant={"destructive"}
-            onClick={() => navigate({to: '/'})}
+            onClick={() => logout()}
             className="text-white bg-[#FE4444] hidden md:flex"
           >
             Sair<LogOutIcon></LogOutIcon>
@@ -84,7 +88,10 @@ const navigate = useNavigate()
                 <MenubarSeparator />
                 <MenubarGroup>
                   <MenubarItem>
-                    <Link to="/" className="flex gap-2 items-center p-2">
+                    <Link
+                      onClick={() => logout()}
+                      className="flex gap-2 items-center p-2"
+                    >
                       Logout <LogOutIcon></LogOutIcon>
                     </Link>
                   </MenubarItem>
