@@ -290,7 +290,10 @@ const WatchlistTable = () => {
             </p>
           </EmptyHeader>
           <EmptyContent className="flex-row justify-center gap-2">
-            <Button onClick={() => navigate({to: '/discover'})} variant="outline" className="h-12">
+            <Button
+              onClick={() => navigate({ to: "/discover" })}
+              className="h-12 bg-[#F98635] text-white"
+            >
               Descobertas <StarsIcon></StarsIcon>
             </Button>
           </EmptyContent>

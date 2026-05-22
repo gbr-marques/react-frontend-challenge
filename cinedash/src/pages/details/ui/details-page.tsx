@@ -95,7 +95,7 @@ export function DetailsPage() {
                           ? removeMovie(movie?.id)
                           : addMovie(movie!)
                       }
-                      className="cursor-pointer h-12 uppercase font-extralight bg bg-orange-500"
+                      className="cursor-pointer h-12 uppercase font-extralight bg bg-[#F98635] text-white"
                     >
                       <BookmarkIcon
                         className={`${isFavorite(movie?.id) ? "fill-white" : ""}`}

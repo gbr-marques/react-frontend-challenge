@@ -69,7 +69,7 @@ const MovieHorizontalList = ({
               <Button
                 onClick={() => navigate({ to: "/discover" })}
                 variant="secondary"
-                className="h-12"
+                className="h-12 bg-[#F98635] text-white"
               >
                 Descobertas <StarsIcon />
               </Button>
